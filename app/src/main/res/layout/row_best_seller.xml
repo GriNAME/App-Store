@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="180dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="227dp"
+    android:layout_margin="6dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/best_seller_image"
+            android:layout_width="0dp"
+            android:layout_height="177dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            />
+
+        <TextView
+            android:id="@+id/best_seller_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="$1,500"
+            android:textColor="@color/primary"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/best_seller_price"
+            app:layout_constraintStart_toEndOf="@id/best_seller_price"
+            app:layout_constraintTop_toTopOf="@+id/best_seller_price"
+            />
+
+        <TextView
+            android:id="@+id/best_seller_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/best_seller_name"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/primary"
+            app:layout_constraintBottom_toTopOf="@id/best_seller_name"
+            tools:text="$1,047"
+            />
+
+        <TextView
+            android:id="@+id/best_seller_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="15dp"
+            tools:text="Samsung Galaxy s20 Ultra"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <ImageButton
+            android:id="@+id/best_seller_favorite_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_background_white"
+            app:srcCompat="@drawable/ic_heart_outline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="11dp"
+            android:elevation="10dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

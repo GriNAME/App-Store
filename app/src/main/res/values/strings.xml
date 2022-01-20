@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ECOMMERCE</string>
+    <string name="buy_now">Buy now!</string>
+    <string name="hot_sales">Hot sales</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="search">Search</string>
+</resources>
