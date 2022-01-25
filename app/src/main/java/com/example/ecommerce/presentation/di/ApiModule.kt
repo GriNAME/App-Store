@@ -1,6 +1,7 @@
 package com.example.ecommerce.presentation.di
 
 import com.example.ecommerce.data.api.HomeShopApi
+import com.example.ecommerce.data.repository.RemoteSource
 import com.example.ecommerce.data.repository.RepositoryImpl
 import com.example.ecommerce.data.util.Constants.BASE_URL
 import com.example.ecommerce.domain.repository.Repository
@@ -18,8 +19,14 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideRepository(api: HomeShopApi): Repository {
-        return RepositoryImpl(api = api)
+    fun provideRemoteSource(api: HomeShopApi): RemoteSource {
+        return RemoteSource(api = api)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRepository(remoteSource: RemoteSource): Repository {
+        return RepositoryImpl(remoteSource = remoteSource)
     }
 
     @Singleton

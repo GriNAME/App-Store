@@ -3,6 +3,7 @@ package com.example.ecommerce.presentation.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -19,11 +20,18 @@ class HotSalesAdapter : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
         fun bind(hotSale: HomeStore) {
 
             binding.apply {
+
+                val context = binding.root.context
+
                 hotSaleTitle.text = hotSale.title
                 hotSaleSubtitle.text = hotSale.subtitle
 
                 hotSaleButton.setOnClickListener {
+                    Toast.makeText(context, "Start buying ${hotSale.title}", Toast.LENGTH_SHORT).show()
+                }
 
+                root.setOnClickListener {
+                    Toast.makeText(context, "Navigate to ${hotSale.title}", Toast.LENGTH_SHORT).show()
                 }
 
                 hotSale.isNew.let {

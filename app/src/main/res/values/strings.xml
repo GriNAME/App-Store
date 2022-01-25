@@ -4,4 +4,10 @@
     <string name="hot_sales">Hot sales</string>
     <string name="best_seller">Best Seller</string>
     <string name="search">Search</string>
+    <string name="see_more">see more</string>
+    <string name="select_category">Select Category</string>
+    <string name="view_all">view all</string>
+    <string name="phones">Phones</string>
+    <string name="aaa">fjfj</string>
+    <string name="search_by_qr_code">Search by QR-Code</string>
 </resources>

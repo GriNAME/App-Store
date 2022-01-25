@@ -13,54 +13,11 @@ import javax.inject.Inject
 
 @ViewModelScoped
 class RepositoryImpl @Inject constructor(
-    private val api: HomeShopApi
+    private val remoteSource: RemoteSource
 ) : Repository {
 
-    override fun getHomeStore(): Flow<List<ResultItem>> = flow {
+    override fun getHomeStore(): Flow<List<ResultItem>> = remoteSource.getHomeStore()
 
-        val resultItemsDto = api.getHomeStore().body()!!
-        emit(mapToResultItem(resultItemsDto))
-    }
-
-    private fun mapToResultItem(resultItemDto: List<ResultItemDto>): List<ResultItem> {
-
-        val list = ArrayList<ResultItem>()
-        val bestSellers = ArrayList<BestSeller>()
-        val hotSales = ArrayList<HomeStore>()
-
-        for (result in resultItemDto) {
-
-            for (bestSeller in result.bestSeller) {
-
-                val bestSellerResult = BestSeller(
-                    bestSeller.discountPrice,
-                    bestSeller.id,
-                    bestSeller.isFavorites,
-                    bestSeller.picture,
-                    bestSeller.priceWithoutDiscount,
-                    bestSeller.title
-                )
-                bestSellers.add(bestSellerResult)
-            }
-
-            for (homeStore in result.homeStore) {
-
-                val homeStoreResult = HomeStore(
-                    homeStore.id,
-                    homeStore.isBuy,
-                    homeStore.isNew,
-                    homeStore.picture,
-                    homeStore.subtitle,
-                    homeStore.title
-                )
-                hotSales.add(homeStoreResult)
-            }
-
-            val resultItem = ResultItem(bestSellers, hotSales, result.id)
-            list.add(resultItem)
-        }
-        return list.toList()
-    }
 
 //    // ROOM
 //    fun getHomeShop(): Flow<List<ResultItemEntity>> {

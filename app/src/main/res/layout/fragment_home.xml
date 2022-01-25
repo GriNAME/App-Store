@@ -5,12 +5,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8F8"
+    android:background="@color/bg"
     tools:context=".presentation.ui.home.HomeFragment"
     >
 
+    <TextView
+        android:id="@+id/home_categories_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/select_category"
+        android:textColor="@color/primary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/home_categories_more_text"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/home_categories_more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/view_all"
+        android:textColor="@color/accent"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/home_categories_title"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintStart_toEndOf="@id/home_categories_title"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_categories_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_categories_title"
+        tools:orientation="horizontal"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_category"
+        />
+
+    <!--    <RadioGroup-->
+    <!--        android:id="@+id/home_categories"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:checkedButton="@id/home_categories_phones_button"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:paddingStart="16dp"-->
+    <!--        android:scrollbars="horizontal"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/home_categories_title"-->
+    <!--        >-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/home_categories_phones_button"-->
+    <!--            android:layout_width="71dp"-->
+    <!--            android:layout_height="71dp"-->
+    <!--            android:layout_marginEnd="23dp"-->
+    <!--            android:background="@drawable/radio_button_selector"-->
+    <!--            android:button="@android:color/transparent"-->
+    <!--            android:drawableTop="@drawable/ic_phone"-->
+    <!--            android:drawableTint="@color/icon_color_selector"-->
+    <!--            android:paddingTop="22sp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            />-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/home_categories_computers_button"-->
+    <!--            android:layout_width="71dp"-->
+    <!--            android:layout_height="71dp"-->
+    <!--            android:layout_marginEnd="23dp"-->
+    <!--            android:background="@drawable/radio_button_selector"-->
+    <!--            android:button="@android:color/transparent"-->
+    <!--            android:drawableTop="@drawable/ic_computer"-->
+    <!--            android:drawableTint="@color/icon_color_selector"-->
+    <!--            android:paddingTop="22sp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            />-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/home_categories_health_button"-->
+    <!--            android:layout_width="71dp"-->
+    <!--            android:layout_height="71dp"-->
+    <!--            android:layout_marginEnd="23dp"-->
+    <!--            android:background="@drawable/radio_button_selector"-->
+    <!--            android:button="@android:color/transparent"-->
+    <!--            android:drawableTop="@drawable/ic_health"-->
+    <!--            android:drawableTint="@color/icon_color_selector"-->
+    <!--            android:paddingTop="22sp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            />-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/home_categories_books_button"-->
+    <!--            android:layout_width="71dp"-->
+    <!--            android:layout_height="71dp"-->
+    <!--            android:layout_marginEnd="23dp"-->
+    <!--            android:background="@drawable/radio_button_selector"-->
+    <!--            android:button="@android:color/transparent"-->
+    <!--            android:drawableTop="@drawable/ic_books"-->
+    <!--            android:drawableTint="@color/icon_color_selector"-->
+    <!--            android:paddingTop="22sp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            />-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/home_categories_other_button"-->
+    <!--            android:layout_width="71dp"-->
+    <!--            android:layout_height="71dp"-->
+    <!--            android:layout_marginEnd="23dp"-->
+    <!--            android:background="@drawable/radio_button_selector"-->
+    <!--            android:button="@android:color/transparent"-->
+    <!--            android:drawableTop="@drawable/ic_books"-->
+    <!--            android:drawableTint="@color/icon_color_selector"-->
+    <!--            android:paddingTop="22sp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            />-->
+
+    <!--    </RadioGroup>-->
+
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/home_search_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -27,51 +150,65 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@id/imageButton"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_categories_recycler_view"
         tools:ignore="TouchTargetSizeCheck"
         />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/circle_background_accent_34"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:background="@drawable/circle_background_accent"
+        android:contentDescription="@string/search_by_qr_code"
         android:src="@drawable/ic_qr_code"
         app:layout_constraintEnd_toEndOf="@id/ent_guideline"
-        app:layout_constraintTop_toTopOf="@id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@id/home_search_field"
         app:tint="@color/white"
         tools:ignore="TouchTargetSizeCheck"
         />
 
     <TextView
-        android:id="@+id/hot_sales_title"
+        android:id="@+id/home_hot_sales_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/hot_sales"
         android:textColor="@color/primary"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintEnd_toStartOf="@id/home_hot_sales_more_text"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@id/home_search_field"
+        />
+
+    <TextView
+        android:id="@+id/home_hot_sales_more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/see_more"
+        android:textColor="@color/accent"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/home_hot_sales_title"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintStart_toEndOf="@id/home_hot_sales_title"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hot_sales_recycler_view"
+        android:id="@+id/home_hot_sales_recycler_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hot_sales_title"
+        app:layout_constraintTop_toBottomOf="@id/home_hot_sales_title"
         tools:itemCount="1"
         tools:listitem="@layout/row_hot_sale"
         />
 
     <TextView
-        android:id="@+id/best_seller_title"
+        android:id="@+id/home_best_seller_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -79,13 +216,26 @@
         android:textColor="@color/primary"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintEnd_toStartOf="@id/home_best_seller_more_text"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/hot_sales_recycler_view"
+        app:layout_constraintTop_toBottomOf="@id/home_hot_sales_recycler_view"
+        />
+
+    <TextView
+        android:id="@+id/home_best_seller_more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/see_more"
+        android:textColor="@color/accent"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/home_best_seller_title"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintStart_toEndOf="@id/home_best_seller_title"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/best_seller_recycler_view"
+        android:id="@+id/home_best_seller_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -94,7 +244,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_seller_title"
+        app:layout_constraintTop_toBottomOf="@id/home_best_seller_title"
         tools:listitem="@layout/row_best_seller"
         />
 

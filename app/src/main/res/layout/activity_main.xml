@@ -5,8 +5,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.ui.MainActivity"
     >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#F8F8F8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/toolbar_title"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@drawable/ic_expand_more"
+                app:endIconTint="#B2B2B2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="@color/accent"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:drawablePadding="-12dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="Zihuatanejo, Gro"
+                    android:textColor="@color/primary"
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_host_fragment"
@@ -17,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar"
         app:navGraph="@navigation/home_graph"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

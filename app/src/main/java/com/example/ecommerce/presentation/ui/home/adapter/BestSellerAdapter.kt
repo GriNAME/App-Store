@@ -2,6 +2,7 @@ package com.example.ecommerce.presentation.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.recyclerview.widget.DiffUtil
@@ -20,8 +21,17 @@ class BestSellerAdapter : RecyclerView.Adapter<BestSellerAdapter.ViewHolder>() {
 
         fun bind(bestSeller: BestSeller) {
             binding.apply {
+
+                val context = binding.root.context
+
+                root.setOnClickListener {
+                    Toast.makeText(context, "Navigate to ${bestSeller.title}", Toast.LENGTH_SHORT).show()
+                }
+
                 bestSellerName.text = bestSeller.title
-                bestSellerPrice.text = "$${bestSeller.discountPrice}"
+
+                val price = "$${bestSeller.discountPrice}"
+                bestSellerPrice.text = price
 
                 val text = "<strike><font color=\'#757575\'>$${bestSeller.priceWithoutDiscount}</font></strike>"
                 bestSellerOldPrice.text = HtmlCompat.fromHtml(text, FROM_HTML_MODE_COMPACT)

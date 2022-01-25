@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="23dp"
+    android:background="@android:color/transparent"
+    >
+
+    <ImageButton
+        android:id="@+id/category_button"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:background="@drawable/circle_background_white"
+        android:contentDescription="@string/phones"
+        app:layout_constraintBottom_toTopOf="@id/category_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_phone"
+        app:tint="@color/silver"
+        />
+
+    <TextView
+        android:id="@+id/category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="@string/phones"
+        android:textColor="@color/silver"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/category_button"
+        app:layout_constraintStart_toStartOf="@id/category_button"
+        app:layout_constraintTop_toBottomOf="@id/category_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
