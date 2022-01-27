@@ -1,6 +1,8 @@
 package com.example.ecommerce.data.api.model
 
 
+import com.example.ecommerce.data.storage.entity.BestSellerEntity
+import com.example.ecommerce.domain.model.BestSeller
 import com.google.gson.annotations.SerializedName
 
 data class BestSellerDto(
@@ -16,4 +18,22 @@ data class BestSellerDto(
     val priceWithoutDiscount: Int,
     @SerializedName("title")
     val title: String
-)
+) {
+    fun toBestSeller() = BestSeller(
+        discountPrice = discountPrice,
+        id = id,
+        isFavorites = isFavorites,
+        picture = picture,
+        priceWithoutDiscount = priceWithoutDiscount,
+        title = title
+    )
+
+    fun toBestSellerEntity() = BestSellerEntity(
+        discountPrice = discountPrice,
+        id = id,
+        isFavorites = isFavorites,
+        picture = picture,
+        priceWithoutDiscount = priceWithoutDiscount,
+        title = title
+    )
+}

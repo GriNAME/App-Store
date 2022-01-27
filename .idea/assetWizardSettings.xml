@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Android/SDK/icons/material/materialicons/expand_more/baseline_expand_more_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Android/SDK/icons/material/materialiconsoutlined/store/outline_store_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_phone" />
-                            <entry key="sourceFile" value="C:\Users\GriNAME\Pictures\Графика\ic_phone.svg" />
+                            <entry key="outputName" value="ic_store" />
+                            <entry key="sourceFile" value="C:\Users\GriNAME\Pictures\Графика\ic_dot.svg" />
                           </map>
                         </option>
                       </PersistentState>

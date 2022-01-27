@@ -7,6 +7,6 @@ object Constants {
     const val API_KEY = "61ddae2e95cb716ea5ee48e4"
 
     /** ROOM */
-    const val DATABASE_NAME = "home_database"
-    const val TABLE_HOME_NAME = "home_shop_table"
+    const val DATABASE_NAME = "store_database"
+    const val TABLE_HOME_NAME = "home_store_table"
 }

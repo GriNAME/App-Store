@@ -8,11 +8,11 @@ import com.example.ecommerce.data.storage.entity.ResultItemEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ResultItemDao {
+interface StoreDao {
 
-    @Query("SELECT * FROM home_shop_table")
+    @Query("SELECT * FROM home_store_table")
     fun readAllData(): Flow<List<ResultItemEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertResult(resultItemEntity: List<ResultItemEntity>)
+    suspend fun insertAllResults(resultItemEntity: List<ResultItemEntity>)
 }
