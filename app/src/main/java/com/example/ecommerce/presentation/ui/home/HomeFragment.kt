@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.*
@@ -85,16 +86,17 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // Эмитация добавления категорий через лайвдату
     private fun createCategories(): ArrayList<Category> {
-        return arrayListOf<Category>(
-            Category(requireContext().getDrawable(R.drawable.ic_phone), "Phones", true),
-            Category(requireContext().getDrawable(R.drawable.ic_computer), "Computer"),
-            Category(requireContext().getDrawable(R.drawable.ic_health), "Health"),
-            Category(requireContext().getDrawable(R.drawable.ic_books), "Books"),
-            Category(requireContext().getDrawable(R.drawable.ic_phone), "Phones"),
-            Category(requireContext().getDrawable(R.drawable.ic_computer), "Computer"),
-            Category(requireContext().getDrawable(R.drawable.ic_health), "Health"),
-            Category(requireContext().getDrawable(R.drawable.ic_books), "Books"),
+        return arrayListOf(
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_phone), "Phones"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_computer), "Computer"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_health), "Health"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_books), "Books"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_phone), "Phones"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_computer), "Computer"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_health), "Health"),
+            Category(AppCompatResources.getDrawable(binding.root.context, R.drawable.ic_books), "Books"),
         )
     }
 }

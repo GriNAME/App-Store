@@ -4,6 +4,5 @@ import android.graphics.drawable.Drawable
 
 data class Category(
     var icon: Drawable?,
-    var name: String,
-    var isChecked: Boolean = false
+    var name: String
 )

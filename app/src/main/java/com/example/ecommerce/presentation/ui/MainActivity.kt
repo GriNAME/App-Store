@@ -44,8 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment,
-                R.id.homeFragment, // Заглушка для корзины
+
                 R.id.homeFragment, // Заглушка для избранного
                 R.id.homeFilterBottomSheet // Заглушка для профиля
             )

@@ -12,41 +12,37 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     var selectedItemPos = 0
-    var lastItemSelectedPos = 0
+    var lastItemSelectedPos = -1
+    var initPosition = true
 
     inner class ViewHolder(private val binding: RowCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private val context = binding.root.context
+
+        init {
+            binding.categoryButton.setOnClickListener {
+                selectedItemPos = adapterPosition
+
+                lastItemSelectedPos = if (lastItemSelectedPos == -1)
+                    selectedItemPos
+                else {
+                    notifyItemChanged(lastItemSelectedPos)
+                    selectedItemPos
+                }
+                notifyItemChanged(selectedItemPos)
+
+                if (initPosition) {
+                    notifyItemRangeChanged(0, 1)
+                    initPosition = false
+                }
+            }
+        }
 
         fun bind(category: Category) {
 
             binding.apply {
                 categoryButton.load(category.icon)
                 categoryText.text = category.name
-
-                categoryButton.setOnClickListener {
-                    if (!category.isChecked) {
-                        selectedItem()
-                        category.isChecked = true
-                    } else {
-                        unselectedItem()
-                        category.isChecked = false
-                    }
-                }
-            }
-        }
-
-        init {
-            itemView.setOnClickListener {
-                selectedItemPos = adapterPosition
-
-                if (lastItemSelectedPos == 0)
-                    lastItemSelectedPos = selectedItemPos
-                else {
-                    notifyItemChanged(lastItemSelectedPos)
-                    lastItemSelectedPos = selectedItemPos
-                }
-                notifyItemChanged(selectedItemPos)
             }
         }
 
@@ -67,19 +63,22 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding =
-            RowCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (position == 0)
+            holder.selectedItem()
+
         if (position == selectedItemPos)
             holder.selectedItem()
         else
             holder.unselectedItem()
 
         holder.bind(categories[position])
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding =
+            RowCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int = categories.size
