@@ -8,5 +8,7 @@ object Constants {
 
     /** ROOM */
     const val DATABASE_NAME = "store_database"
-    const val TABLE_HOME_NAME = "home_store_table"
+    const val TABLE_STORE_NAME = "home_store_table"
+    const val TABLE_HOT_SALES_NAME = "hot_sales_table"
+    const val TABLE_BEST_SELLER_NAME = "best_seller_table"
 }

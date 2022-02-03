@@ -1,11 +1,11 @@
 package com.example.ecommerce.data.api.model
 
 
-import com.example.ecommerce.data.storage.entity.HomeStoreEntity
+import com.example.ecommerce.data.storage.entity.HotSalesEntity
 import com.example.ecommerce.domain.model.HomeStore
 import com.google.gson.annotations.SerializedName
 
-data class HomeStoreDto(
+data class HotSalesDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("is_buy")
@@ -28,7 +28,7 @@ data class HomeStoreDto(
         title = title
     )
 
-    fun toHomeStoreEntity() = HomeStoreEntity(
+    fun toHomeStoreEntity() = HotSalesEntity(
         id = id,
         isBuy = isBuy,
         isNew = isNew,

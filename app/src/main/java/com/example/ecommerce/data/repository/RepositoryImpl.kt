@@ -16,12 +16,27 @@ class RepositoryImpl @Inject constructor(
 ) : Repository {
 
     /** Retrofit */
-    override fun getHomeStore(): Flow<List<ResultItem>> = flow {
-
-        emit(
-            offlineCacheHomeStore(remote.getHomeStore())
-        )
-    }
+    override fun getHomeStore(): Flow<List<ResultItem>> =
+        flow {
+            val result = remote.getHomeStore()
+            result.forEach { resultItemDto ->
+                val bestSellerDto = resultItemDto.bestSeller
+                bestSellerDto.forEach {
+                    local.insertBestSeller(it.toBestSellerEntity())
+                }
+            }
+            result.forEach { resultItemDto ->
+                val hotSalesDto = resultItemDto.hotSales
+                hotSalesDto.forEach {
+                    local.insertHotSales(it.toHomeStoreEntity())
+                }
+            }
+            local.insertAllResults(remote.getHomeStore().map { it.toResultItemEntity() })
+//        emit(
+//            offlineCacheHomeStore(remote.getHomeStore())
+//        )
+        }
+//        local.readAllData().map { it.map { it.toResultItem() } }
 
     private suspend fun offlineCacheHomeStore(resultItems: List<ResultItemDto>): List<ResultItem> {
         return if (remote.hasInternetConnection()) {

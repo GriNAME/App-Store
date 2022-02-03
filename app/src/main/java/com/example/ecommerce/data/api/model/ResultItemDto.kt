@@ -6,22 +6,22 @@ import com.example.ecommerce.domain.model.ResultItem
 import com.google.gson.annotations.SerializedName
 
 data class ResultItemDto(
+    @SerializedName("_id")
+    val id: String,
     @SerializedName("best_seller")
     val bestSeller: List<BestSellerDto>,
     @SerializedName("home_store")
-    val homeStore: List<HomeStoreDto>,
-    @SerializedName("_id")
-    val id: String
+    val hotSales: List<HotSalesDto>
 ) {
     fun toResultItem() = ResultItem(
+        id = id,
         bestSeller = bestSeller.map { it.toBestSeller() },
-        homeStore = homeStore.map { it.toHomeStore() },
-        id = id
+        homeStore = hotSales.map { it.toHomeStore() }
     )
 
     fun toResultItemEntity() = ResultItemEntity(
+        id = id,
         bestSeller = bestSeller.map { it.toBestSellerEntity() },
-        homeStore = homeStore.map { it.toHomeStoreEntity() },
-        id = id
+        hotSales = hotSales.map { it.toHomeStoreEntity() }
     )
 }
