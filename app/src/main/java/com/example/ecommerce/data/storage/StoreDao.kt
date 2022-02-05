@@ -1,38 +1,42 @@
 package com.example.ecommerce.data.storage
 
 import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
 import com.example.ecommerce.data.storage.entity.BestSellerEntity
 import com.example.ecommerce.data.storage.entity.HotSalesEntity
 import com.example.ecommerce.data.storage.entity.ResultItemEntity
-import com.example.ecommerce.data.storage.entity.relation.ResultWithBestSellers
-import com.example.ecommerce.data.storage.entity.relation.ResultWithHotSales
+import com.example.ecommerce.data.storage.entity.relation.ResultWithBestSellersAndHotSales
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 
 @Dao
 interface StoreDao {
 
     @Query("SELECT * FROM home_store_table")
-    fun readAllData(): Flow<List<ResultItemEntity>>
-
-    @Query("SELECT bestSeller FROM home_store_table")
-    fun getBestSellers(): Flow<List<BestSellerEntity>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertBestSeller(bestSeller: BestSellerEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertHotSales(hotSales: HotSalesEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllResults(resultItemEntity: List<ResultItemEntity>)
+    fun readAllData(): Flow<List<ResultWithBestSellersAndHotSales>>
 
     @Transaction
-    @Query("SELECT * FROM home_store_table WHERE id = :id_result")
-    suspend fun getResultWithBestSeller(id_result: String): List<ResultWithBestSellers>
+    suspend fun insertAllResults(entities: List<ResultWithBestSellersAndHotSales>) {
+        for (entity in entities) {
+            insertResultItem(entity.resultItemEntity)
+            deleteBestSellersByParentId(entity.resultItemEntity.id) // Delete all data
+            insertBestSeller(entity.bestSellerEntities)
+            deleteHotSalesByParentId(entity.resultItemEntity.id) // Delete all data
+            insertHotSales(entity.hotSalesEntities)
+        }
+    }
 
-    @Transaction
-    @Query("SELECT * FROM home_store_table WHERE id = :id_result")
-    suspend fun getResultWithHotSales(id_result: String): List<ResultWithHotSales>
+    @Insert(onConflict = REPLACE)
+    suspend fun insertResultItem(entity: ResultItemEntity)
+
+    @Insert(onConflict = REPLACE)
+    suspend fun insertBestSeller(bestSeller: List<BestSellerEntity>)
+
+    @Insert(onConflict = REPLACE)
+    suspend fun insertHotSales(hotSales: List<HotSalesEntity>)
+
+    @Query("DELETE FROM best_seller_table WHERE parent_id = :parentId")
+    suspend fun deleteBestSellersByParentId(parentId: String)
+
+    @Query("DELETE FROM hot_sales_table WHERE parent_id = :parentId")
+    suspend fun deleteHotSalesByParentId(parentId: String)
 }

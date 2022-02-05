@@ -4,7 +4,7 @@ import androidx.room.TypeConverter
 import com.example.ecommerce.data.storage.entity.BestSellerEntity
 import com.example.ecommerce.data.storage.entity.HotSalesEntity
 import com.example.ecommerce.domain.model.BestSeller
-import com.example.ecommerce.domain.model.HomeStore
+import com.example.ecommerce.domain.model.HotSales
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -24,13 +24,13 @@ class GsonConverter {
     }
 
     @TypeConverter
-    fun homeStoreToString(homeStore: List<HomeStore>): String {
-        return gson.toJson(homeStore)
+    fun homeStoreToString(hotSales: List<HotSales>): String {
+        return gson.toJson(hotSales)
     }
 
     @TypeConverter
-    fun stringToHomeStore(homeStoreJson: String): List<HomeStore> {
-        val type = object : TypeToken<List<HomeStore>>() {}.type
+    fun stringToHomeStore(homeStoreJson: String): List<HotSales> {
+        val type = object : TypeToken<List<HotSales>>() {}.type
         return gson.fromJson(homeStoreJson, type)
     }
 

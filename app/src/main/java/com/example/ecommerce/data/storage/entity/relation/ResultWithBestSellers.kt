@@ -10,7 +10,7 @@ data class ResultWithBestSellers(
     val resultItemEntity: ResultItemEntity,
     @Relation(
         parentColumn = "id",
-        entityColumn = "id_result"
+        entityColumn = "parent_id"
     )
     val bestSellers: List<BestSellerEntity>
 )

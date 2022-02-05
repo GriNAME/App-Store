@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.ecommerce.databinding.RowHotSaleBinding
-import com.example.ecommerce.domain.model.HomeStore
+import com.example.ecommerce.domain.model.HotSales
 import com.example.ecommerce.presentation.ui.util.ListDiffUtil
 
 class HotSalesAdapter : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
 
-    private var hotSales = emptyList<HomeStore>()
+    private var hotSales = emptyList<HotSales>()
 
     class ViewHolder(private val binding: RowHotSaleBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(hotSale: HomeStore) {
+        fun bind(hotSale: HotSales) {
 
             binding.apply {
 
@@ -48,7 +48,7 @@ class HotSalesAdapter : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
         }
     }
 
-    fun setData(hotSales: List<HomeStore>) {
+    fun setData(hotSales: List<HotSales>) {
         val listDiffUtil = ListDiffUtil(hotSales, this.hotSales)
         val resultDiffUtil = DiffUtil.calculateDiff(listDiffUtil)
         this.hotSales = hotSales

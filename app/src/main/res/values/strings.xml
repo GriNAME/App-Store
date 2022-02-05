@@ -18,12 +18,8 @@
     <string name="size">Size</string>
     <string name="price">Price</string>
     <string name="open_filter_dialog">Open filter dialog</string>
-    <string name="shop">Shop</string>
-    <string name="explorer">Explorer</string>
-    <string name="profile">Profile</string>
-    <string name="favorite">Favorite</string>
-<!--    <string name="shop">● Shop</string>-->
-<!--    <string name="explorer">● Explorer</string>-->
-<!--    <string name="profile">● Profile</string>-->
-<!--    <string name="favorite">● Favorite</string>-->
+    <string name="shop">● Shop</string>
+    <string name="explorer">● Explorer</string>
+    <string name="profile">● Profile</string>
+    <string name="favorite">● Favorite</string>
 </resources>

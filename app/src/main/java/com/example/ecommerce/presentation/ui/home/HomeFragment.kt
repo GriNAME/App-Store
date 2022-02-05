@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
         mainViewModel.home.observe(viewLifecycleOwner) {
             bestSellerAdapter.setData(it.first().bestSeller)
-            hotSalesAdapter.setData(it.first().homeStore)
+            hotSalesAdapter.setData(it.first().hotSales)
         }
 
         initRecyclerViews()
