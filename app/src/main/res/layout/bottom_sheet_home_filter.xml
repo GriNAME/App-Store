@@ -107,8 +107,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/filter_price_input"
-        style="@style/MyTextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         android:layout_width="0dp"
+        app:boxBackgroundMode="outline"
         android:layout_height="wrap_content"
         app:endIconDrawable="@drawable/ic_expand_more"
         app:endIconTint="#B2B2B2"

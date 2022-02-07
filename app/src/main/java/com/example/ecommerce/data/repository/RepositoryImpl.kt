@@ -18,23 +18,24 @@ class RepositoryImpl @Inject constructor(
     private val local: LocalSource
 ) : Repository {
 
-    /** Retrofit */
     override fun getHomeStore(): Flow<List<ResultItem>> =
         if (remote.hasInternetConnection()) {
             flow {
                 val entities = remote.getHomeStore().map { dto ->
                     dto.mapToEntity()
                 }
-                local.insertAllResults(entities)
+
+                if (entities != null) {
+                    local.insertAllResults(entities)
+                }
                 emit(entities.mapToModels())
             }
         } else {
-            local.getAllData().map { it.mapToModels() }
+            local.getAllData().let { flow ->
+                flow.map { list -> list.mapToModels() }
+            }
         }
 
     override fun searchBestSellerByTitle(searchQuery: String): Flow<List<BestSeller>> =
         local.searchBestSellerByTitle(searchQuery).map { it.mapToModels() }
-
-    /** ROOM */
-
 }
