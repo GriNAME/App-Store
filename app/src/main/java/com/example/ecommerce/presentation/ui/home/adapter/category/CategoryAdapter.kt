@@ -2,6 +2,8 @@ package com.example.ecommerce.presentation.ui.home.adapter.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.ecommerce.R
@@ -18,6 +20,7 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
     inner class ViewHolder(private val binding: RowCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private val context = binding.root.context
+        private lateinit var category: Category
 
         init {
             binding.categoryButton.setOnClickListener {
@@ -35,20 +38,24 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
                     notifyItemRangeChanged(0, 1)
                     initPosition = false
                 }
+
+                Toast.makeText(context, "Navigate to ${category.name} category", Toast.LENGTH_SHORT).show()
             }
         }
 
         fun bind(category: Category) {
+            this.category = category
 
             binding.apply {
                 categoryButton.load(category.icon)
                 categoryText.text = category.name
             }
+
         }
 
         fun selectedItem() {
             binding.apply {
-                categoryButton.background = context.getDrawable(R.drawable.circle_background_accent)
+                categoryButton.background = AppCompatResources.getDrawable(context, R.drawable.circle_background_accent)
                 categoryButton.setColorFilter(context.getColor(R.color.white))
                 categoryText.setTextColor(context.getColor(R.color.accent))
             }
@@ -56,7 +63,7 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
 
         fun unselectedItem() {
             binding.apply {
-                categoryButton.background = context.getDrawable(R.drawable.circle_background_white)
+                categoryButton.background = AppCompatResources.getDrawable(context, R.drawable.circle_background_white)
                 categoryButton.setColorFilter(context.getColor(R.color.silver))
                 categoryText.setTextColor(context.getColor(R.color.silver))
             }
@@ -64,6 +71,7 @@ class CategoryAdapter(private val categories: ArrayList<Category>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         if (position == 0)
             holder.selectedItem()
 

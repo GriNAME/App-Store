@@ -7,12 +7,19 @@ import com.example.ecommerce.data.storage.entity.HotSalesEntity
 import com.example.ecommerce.data.storage.entity.ResultItemEntity
 import com.example.ecommerce.data.storage.entity.relation.ResultWithBestSellersAndHotSales
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Dao
 interface StoreDao {
 
     @Query("SELECT * FROM home_store_table")
     fun readAllData(): Flow<List<ResultWithBestSellersAndHotSales>>
+
+    @Transaction
+    @Query("SELECT * FROM home_store_table")
+    fun findAll(): Flow<List<ResultWithBestSellersAndHotSales>>
+
+    fun findAllDistinct() = findAll().distinctUntilChanged() // notify after change data
 
     @Transaction
     suspend fun insertAllResults(entities: List<ResultWithBestSellersAndHotSales>) {
@@ -39,4 +46,7 @@ interface StoreDao {
 
     @Query("DELETE FROM hot_sales_table WHERE parent_id = :parentId")
     suspend fun deleteHotSalesByParentId(parentId: String)
+
+    @Query("SELECT * FROM best_seller_table WHERE title LIKE :searchTitle")
+    fun searchBestSellerByTitle(searchTitle: String): Flow<List<BestSellerEntity>>
 }

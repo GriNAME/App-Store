@@ -1,11 +1,16 @@
 package com.example.ecommerce.presentation.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.*
@@ -44,6 +49,80 @@ class HomeFragment : Fragment() {
 
         initRecyclerViews()
         initMoreTexts()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initSearch()
+    }
+
+    private fun initSearch() {
+        binding.apply {
+
+            val names = ArrayList<String>()
+
+            mainViewModel.home.observe(viewLifecycleOwner) { list ->
+                list.map { resultItem ->
+                    resultItem.bestSeller.forEach {
+                        names.add(it.title)
+                    }
+                }
+            }
+
+            val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, names)
+
+            homeSearchField.setAdapter(arrayAdapter)
+            homeSearchField.setOnItemClickListener { parent, view, position, id ->
+                Toast.makeText(
+                    requireContext(),
+                    "Filter by ${parent.getItemAtPosition(position)}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                searchByTitle(parent.getItemAtPosition(position).toString())
+            }
+
+            homeSearchField.setOnKeyListener { _, keyCode, keyEvent ->
+                if ((keyEvent.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    searchByTitle(homeSearchField.text.toString())
+                    homeSearchByQrButton.hideKeyboard()
+                    homeSearchField.text.clear()
+                }
+                false
+            }
+
+            homeSearchByQrButton.setOnClickListener {
+                val searchQuery = homeSearchField.text.toString()
+
+                if (searchQuery.isNotBlank()) {
+                    searchByTitle(searchQuery)
+                    homeSearchByQrButton.hideKeyboard()
+                    homeSearchField.text.clear()
+                }
+                else
+                    Toast.makeText(requireContext(), "Searching by QR-Code", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+    private fun searchByTitle(search: String): ArrayList<String> {
+        val titles = ArrayList<String>()
+        val searchQuery = "%$search%"
+
+        mainViewModel.searchBestSellerByName(searchQuery).observe(viewLifecycleOwner) {
+            it.let { list ->
+                bestSellerAdapter.setData(list)
+                list.forEach { seller ->
+                    titles.add(seller.title)
+                }
+            }
+        }
+
+        return titles
     }
 
     private fun initMoreTexts() {

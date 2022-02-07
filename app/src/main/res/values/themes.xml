@@ -16,7 +16,18 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="bottomNavigationStyle">@style/ShapeAppearance.Button.CutCorners</item>
-        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+
+        <item name="android:textColorHint">#000</item>
+    </style>
+
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <!-- border color -->
+        <item name="boxStrokeColor">#0ff</item>
+
+        <!-- The color of the label when it is collapsed and the text field is active -->
+        <item name="hintTextColor">#f0f</item>
+        <!-- The color of the label in all other text field states (such as resting and disabled) -->
+        <item name="android:textColorHint">#ff0</item>
     </style>
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
