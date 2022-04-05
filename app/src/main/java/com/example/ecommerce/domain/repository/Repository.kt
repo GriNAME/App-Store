@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface Repository {
 
-    fun getHomeStore(): Flow<List<ResultItem>>
+    fun getHomeStore(): Flow<ResultItem>
 
     fun searchBestSellerByTitle(searchQuery: String): Flow<List<BestSeller>>
 }

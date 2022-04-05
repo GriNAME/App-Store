@@ -23,8 +23,8 @@ data class ResultWithBestSellersAndHotSales(
 
 fun ResultItemDto.mapToEntity() = ResultWithBestSellersAndHotSales(
     mapToResultItemEntity(),
-    bestSeller.mapToEntities(parentId = id),
-    hotSales.mapToEntities(parentId = id)
+    bestSeller.mapToEntities("0"),
+    hotSales.mapToEntities("0")
 )
 
 fun ResultWithBestSellersAndHotSales.mapToModel() = ResultItem(

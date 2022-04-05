@@ -13,10 +13,10 @@ class LocalSource @Inject constructor(
     private val storeDao: StoreDao
 ) {
 
-    fun getAllData(): Flow<List<ResultWithBestSellersAndHotSales>> =
+    fun getAllData(): Flow<ResultWithBestSellersAndHotSales> =
         storeDao.findAll()
 
-    suspend fun insertAllResults(resultEntities: List<ResultWithBestSellersAndHotSales>) =
+    suspend fun insertAllResults(resultEntities: ResultWithBestSellersAndHotSales) =
         storeDao.insertAllResults(resultEntities)
 
     fun searchBestSellerByTitle(searchQuery: String): Flow<List<BestSellerEntity>> =

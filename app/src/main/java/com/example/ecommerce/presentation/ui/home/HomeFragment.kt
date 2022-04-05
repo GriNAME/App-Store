@@ -43,8 +43,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mainViewModel.home.observe(viewLifecycleOwner) {
-            bestSellerAdapter.setData(it.first().bestSeller)
-            hotSalesAdapter.setData(it.first().hotSales)
+            bestSellerAdapter.setData(it.bestSeller)
+            hotSalesAdapter.setData(it.hotSales)
         }
 
         initRecyclerViews()
@@ -61,11 +61,9 @@ class HomeFragment : Fragment() {
 
             val names = ArrayList<String>()
 
-            mainViewModel.home.observe(viewLifecycleOwner) { list ->
-                list.map { resultItem ->
-                    resultItem.bestSeller.forEach {
-                        names.add(it.title)
-                    }
+            mainViewModel.home.observe(viewLifecycleOwner) { resultItem ->
+                resultItem.bestSeller.forEach {
+                    names.add(it.title)
                 }
             }
 
@@ -97,8 +95,7 @@ class HomeFragment : Fragment() {
                     searchByTitle(searchQuery)
                     homeSearchByQrButton.hideKeyboard()
                     homeSearchField.text.clear()
-                }
-                else
+                } else
                     Toast.makeText(requireContext(), "Searching by QR-Code", Toast.LENGTH_SHORT).show()
             }
         }

@@ -17,19 +17,17 @@ interface StoreDao {
 
     @Transaction
     @Query("SELECT * FROM home_store_table")
-    fun findAll(): Flow<List<ResultWithBestSellersAndHotSales>>
+    fun findAll(): Flow<ResultWithBestSellersAndHotSales>
 
     fun findAllDistinct() = findAll().distinctUntilChanged() // notify after change data
 
     @Transaction
-    suspend fun insertAllResults(entities: List<ResultWithBestSellersAndHotSales>) {
-        for (entity in entities) {
+    suspend fun insertAllResults(entity: ResultWithBestSellersAndHotSales) {
             insertResultItem(entity.resultItemEntity)
             deleteBestSellersByParentId(entity.resultItemEntity.id) // Delete all data
             insertBestSeller(entity.bestSellerEntities)
             deleteHotSalesByParentId(entity.resultItemEntity.id) // Delete all data
             insertHotSales(entity.hotSalesEntities)
-        }
     }
 
     @Insert(onConflict = REPLACE)

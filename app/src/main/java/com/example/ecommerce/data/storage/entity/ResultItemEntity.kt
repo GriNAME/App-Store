@@ -16,6 +16,4 @@ data class ResultItemEntity(
     val id: String
 )
 
-fun ResultItemDto.mapToResultItemEntity() = ResultItemEntity(id)
-
-//fun Flow<List<ResultItem>>.mapToResultItem() =
+fun ResultItemDto.mapToResultItemEntity() = ResultItemEntity("0")

@@ -12,7 +12,7 @@ class MainViewModel @Inject constructor(
     private val getHomeUseCase: GetHomeUseCase
 ) : ViewModel() {
 
-    val home: LiveData<List<ResultItem>> = getHomeUseCase.execute().asLiveData()
+    val home: LiveData<ResultItem> = getHomeUseCase.execute().asLiveData()
 
     var searchedBestSeller: LiveData<List<BestSeller>> = MediatorLiveData()
 

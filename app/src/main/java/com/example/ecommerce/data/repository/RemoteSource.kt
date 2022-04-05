@@ -13,7 +13,7 @@ class RemoteSource @Inject constructor(
     private val context: Context
 ) {
 
-    suspend fun getHomeStore(): List<ResultItemDto> {
+    suspend fun getHomeStore(): ResultItemDto {
 
         return api.getHomeStore().let {
             it.body()!!

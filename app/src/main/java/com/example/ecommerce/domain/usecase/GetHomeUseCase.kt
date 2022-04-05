@@ -10,7 +10,7 @@ class GetHomeUseCase @Inject constructor(
     private val repository: Repository
 ) {
 
-    fun execute(): Flow<List<ResultItem>> =
+    fun execute(): Flow<ResultItem> =
         repository.getHomeStore()
 
     fun searchBestSellerByName(searchQuery: String): Flow<List<BestSeller>> =

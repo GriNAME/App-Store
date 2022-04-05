@@ -2,6 +2,7 @@ package com.example.ecommerce.data.repository
 
 import com.example.ecommerce.data.storage.entity.mapToModels
 import com.example.ecommerce.data.storage.entity.relation.mapToEntity
+import com.example.ecommerce.data.storage.entity.relation.mapToModel
 import com.example.ecommerce.data.storage.entity.relation.mapToModels
 import com.example.ecommerce.domain.model.BestSeller
 import com.example.ecommerce.domain.model.ResultItem
@@ -18,21 +19,19 @@ class RepositoryImpl @Inject constructor(
     private val local: LocalSource
 ) : Repository {
 
-    override fun getHomeStore(): Flow<List<ResultItem>> =
+    override fun getHomeStore(): Flow<ResultItem> =
         if (remote.hasInternetConnection()) {
             flow {
-                val entities = remote.getHomeStore().map { dto ->
-                    dto.mapToEntity()
-                }
+                val entity = remote.getHomeStore().mapToEntity()
 
-                if (entities != null) {
-                    local.insertAllResults(entities)
+                if (entity != null) {
+                    local.insertAllResults(entity)
                 }
-                emit(entities.mapToModels())
+                emit(entity.mapToModel())
             }
         } else {
             local.getAllData().let { flow ->
-                flow.map { list -> list.mapToModels() }
+                flow.map { list -> list.mapToModel() }
             }
         }
 
