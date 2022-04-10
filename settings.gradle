@@ -9,6 +9,7 @@ dependencyResolutionManagement {
 rootProject.name = "ECOMMERCE"
 include ':app'
 include ':features:homestore'
+include ':features:homestore_api'
 include ':features:details'
 include ':features:cart'
 include ':shared:core'

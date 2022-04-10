@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/base_graph">
+
+    <include app:graph="@navigation/base_graph" />
+
+    <include app:graph="@navigation/home_store_graph" />
+    <action
+        android:id="@+id/action_global_home_store"
+        app:destination="@id/home_store_flow"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/main_nav_graph" />
+
+    <include app:graph="@navigation/details_graph" />
+    <action
+        android:id="@+id/action_global_details"
+        app:destination="@id/details_flow"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/main_nav_graph" />
+
+    <include app:graph="@navigation/cart_graph" />
+    <action
+        android:id="@+id/action_global_cart"
+        app:destination="@id/cart_flow"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/main_nav_graph" />
+
+</navigation>

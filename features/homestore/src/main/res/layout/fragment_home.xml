@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    app:layoutDescription="@xml/fragment_home_scene"
+    tools:context="com.example.homestore.presentation.ui.home.HomeFragment"
+    >
+
+    <TextView
+        android:id="@+id/home_categories_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/select_category"
+        android:textColor="@color/primary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/home_categories_more_text"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/home_categories_more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/view_all"
+        android:textColor="@color/accent"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/home_categories_title"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintStart_toEndOf="@id/home_categories_title"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_categories_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        app:layout_constraintBaseline_toTopOf="@id/home_search_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_categories_title"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_category"
+        />
+
+
+    <AutoCompleteTextView
+        android:id="@+id/home_search_field"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="11dp"
+        android:layout_weight="1"
+        android:background="@drawable/circle_background_white_field"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/accent"
+        android:elevation="20dp"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        android:inputType="textAutoComplete"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/home_search_by_qr_button"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/home_categories_recycler_view"
+        tools:ignore="TouchTargetSizeCheck"
+        />
+
+    <ImageButton
+        android:id="@+id/home_search_by_qr_button"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:background="@drawable/circle_background_accent"
+        android:contentDescription="@string/search_by_qr_code"
+        android:src="@drawable/ic_qr_code"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintTop_toTopOf="@id/home_search_field"
+        app:tint="@color/white"
+        tools:ignore="TouchTargetSizeCheck"
+        />
+
+    <TextView
+        android:id="@+id/home_hot_sales_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/hot_sales"
+        android:textColor="@color/primary"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/home_hot_sales_more_text"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/home_search_field"
+        />
+
+    <TextView
+        android:id="@+id/home_hot_sales_more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/see_more"
+        android:textColor="@color/accent"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/home_hot_sales_title"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintStart_toEndOf="@id/home_hot_sales_title"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_hot_sales_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_hot_sales_title"
+        tools:itemCount="3"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_hot_sale"
+        />
+
+    <TextView
+        android:id="@+id/home_best_seller_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/best_seller"
+        android:textColor="@color/primary"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/home_best_seller_more_text"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/home_hot_sales_recycler_view"
+        />
+
+    <TextView
+        android:id="@+id/home_best_seller_more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/see_more"
+        android:textColor="@color/accent"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/home_best_seller_title"
+        app:layout_constraintEnd_toEndOf="@id/ent_guideline"
+        app:layout_constraintStart_toEndOf="@id/home_best_seller_title"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_best_seller_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_best_seller_title"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/row_best_seller"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ent_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp"
+        />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
