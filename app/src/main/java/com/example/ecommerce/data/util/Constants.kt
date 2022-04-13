@@ -4,7 +4,6 @@ object Constants {
 
     /** Retrofit */
     const val BASE_URL = "https://run.mocky.io/v3/"
-    const val API_KEY = "61ddae2e95cb716ea5ee48e4"
 
     /** ROOM */
     const val DATABASE_NAME = "store_database"

@@ -11,14 +11,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/cart" />
-            <option value="$PROJECT_DIR$/features/details" />
-            <option value="$PROJECT_DIR$/features/homestore" />
-            <option value="$PROJECT_DIR$/features/homestore_api" />
-            <option value="$PROJECT_DIR$/shared" />
-            <option value="$PROJECT_DIR$/shared/core" />
-            <option value="$PROJECT_DIR$/shared/navigation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
