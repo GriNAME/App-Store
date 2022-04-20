@@ -2,10 +2,11 @@ package com.example.ecommerce.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.ecommerce.data.repository.LocalSource
-import com.example.ecommerce.data.storage.StoreDao
-import com.example.ecommerce.data.storage.StoreDatabase
-import com.example.ecommerce.data.util.Constants.DATABASE_NAME
+import com.example.homestore_api.data.repository.LocalSource
+import com.example.homestore_api.data.storage.StoreDao
+import com.example.homestore_api.data.storage.StoreDatabase
+import com.example.homestore_api.data.util.Constants.DATABASE_NAME
+import com.example.navigation.Navigator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,9 +20,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideLocalSource(storeDao: StoreDao): LocalSource {
-        return LocalSource(storeDao = storeDao)
-    }
+    fun provideLocalSource(storeDao: StoreDao) = LocalSource(storeDao = storeDao)
 
     @Singleton
     @Provides
@@ -34,7 +33,9 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideHomeDao(shopDatabase: StoreDatabase): StoreDao {
-        return shopDatabase.getStoreDao()
-    }
+    fun provideHomeDao(shopDatabase: StoreDatabase) = shopDatabase.getStoreDao()
+
+    @Singleton
+    @Provides
+    fun provideNavigator() = Navigator()
 }

@@ -15,12 +15,14 @@
         android:theme="@style/Theme.ECOMMERCE"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name="com.example.commonui.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <nav-graph android:value="@navigation/main_graph" />
         </activity>
     </application>
 

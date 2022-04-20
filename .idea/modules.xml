@@ -4,12 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ECOMMERCE.iml" filepath="$PROJECT_DIR$/.idea/modules/ECOMMERCE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/ECOMMERCE.features.iml" filepath="$PROJECT_DIR$/.idea/modules/features/ECOMMERCE.features.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/cart/ECOMMERCE.features.cart.iml" filepath="$PROJECT_DIR$/.idea/modules/features/cart/ECOMMERCE.features.cart.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/details/ECOMMERCE.features.details.iml" filepath="$PROJECT_DIR$/.idea/modules/features/details/ECOMMERCE.features.details.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/homestore/ECOMMERCE.features.homestore.iml" filepath="$PROJECT_DIR$/.idea/modules/features/homestore/ECOMMERCE.features.homestore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/homestore_api/ECOMMERCE.features.homestore_api.iml" filepath="$PROJECT_DIR$/.idea/modules/features/homestore_api/ECOMMERCE.features.homestore_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/ECOMMERCE.feature.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/ECOMMERCE.feature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/ECOMMERCE.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/ECOMMERCE.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.iml" />
     </modules>

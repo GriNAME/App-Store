@@ -8,3 +8,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ECOMMERCE"
 include ':app'
+include ':shared:navigation'
+include ':shared:core'
+include ':shared:commonui'
+include ':feature:homestore'
+include ':feature:details'
+include ':feature:cart'
+include ':feature:homestore_api'

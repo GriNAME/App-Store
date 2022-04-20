@@ -1,7 +1,7 @@
 package com.example.ecommerce.di
 
-import com.example.ecommerce.domain.repository.Repository
-import com.example.ecommerce.domain.usecase.GetHomeUseCase
+import com.example.homestore_api.domain.repository.Repository
+import com.example.homestore_api.domain.usecase.GetHomeUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

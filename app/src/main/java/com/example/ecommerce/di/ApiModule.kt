@@ -1,13 +1,12 @@
 package com.example.ecommerce.di
 
 import android.content.Context
-import com.example.ecommerce.data.api.HomeShopApi
-import com.example.ecommerce.data.repository.LocalSource
-import com.example.ecommerce.data.repository.RemoteSource
-import com.example.ecommerce.data.repository.RepositoryImpl
-import com.example.ecommerce.data.storage.StoreDao
-import com.example.ecommerce.data.util.Constants.BASE_URL
-import com.example.ecommerce.domain.repository.Repository
+import com.example.homestore_api.data.api.HomeShopApi
+import com.example.homestore_api.data.repository.LocalSource
+import com.example.homestore_api.data.repository.RemoteSource
+import com.example.homestore_api.data.repository.RepositoryImpl
+import com.example.homestore_api.data.util.Constants.BASE_URL
+import com.example.homestore_api.domain.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -8,8 +8,8 @@ class Navigator {
 
     fun navigateToFlow(navigationFlow: NavigationFlow) = when (navigationFlow) {
 
-        NavigationFlow.HomeStoreFlow -> navController.navigate(MainNavGraphDirections.actionGlobalHomeStore())
-        NavigationFlow.DetailsFlow -> navController.navigate(MainNavGraphDirections.actionGlobalDetails())
-        NavigationFlow.CartFlow -> navController.navigate(MainNavGraphDirections.actionGlobalCart())
+        NavigationFlow.HomeStoreFlow -> navController.navigate(MainGraphDirections.actionGlobalHomeStoreFlow())
+        NavigationFlow.DetailsFlow -> navController.navigate(MainGraphDirections.actionGlobalToDetailsFlow())
+        NavigationFlow.CartFlow -> navController.navigate(MainGraphDirections.actionGlobalToCartFlow())
     }
 }
