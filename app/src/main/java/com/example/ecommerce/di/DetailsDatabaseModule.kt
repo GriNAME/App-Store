@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.example.details.data.repository.DetailsLocalSource
 import com.example.details.data.storage.DetailsDao
 import com.example.details.data.storage.DetailsDatabase
-import com.example.homestore_api.data.util.Constants.DETAILS_DATABASE_NAME
+import com.example.homestore_api.data.util.Constants.DATABASE_DETAILS_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +27,7 @@ object DetailsDatabaseModule {
         Room.databaseBuilder(
             context,
             DetailsDatabase::class.java,
-            DETAILS_DATABASE_NAME
+            DATABASE_DETAILS_NAME
         ).build()
 
     @Singleton

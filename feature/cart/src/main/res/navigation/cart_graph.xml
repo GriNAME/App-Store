@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.cart.CartFragment"
+        android:name="com.example.cart.presentation.ui.cart.CartFragment"
         android:label="CartFragment" />
 </navigation>

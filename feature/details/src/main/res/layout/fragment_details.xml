@@ -9,7 +9,6 @@
     tools:context=".presentation.ui.DetailsFragment"
     >
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -190,6 +189,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
                 app:layout_constraintEnd_toEndOf="@id/end_guideline"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
+                tools:backgroundTint="@color/accent"
                 />
 
             <androidx.constraintlayout.widget.Guideline

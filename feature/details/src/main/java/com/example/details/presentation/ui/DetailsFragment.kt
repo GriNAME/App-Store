@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.details.R
 import com.example.details.databinding.FragmentDetailsBinding
 import com.example.details.presentation.ui.adapter.FeaturesPagerAdapter
@@ -56,7 +57,7 @@ class DetailsFragment : Fragment() {
             }
 
             backButton.setOnClickListener {
-                (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.HomeStoreFlow)
+                findNavController().popBackStack()
             }
         }
     }

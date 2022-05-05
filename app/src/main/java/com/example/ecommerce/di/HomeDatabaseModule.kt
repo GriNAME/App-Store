@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.example.homestore_api.data.repository.LocalSource
 import com.example.homestore_api.data.storage.StoreDao
 import com.example.homestore_api.data.storage.StoreDatabase
-import com.example.homestore_api.data.util.Constants.DATABASE_NAME
+import com.example.homestore_api.data.util.Constants.DATABASE_STORE_NAME
 import com.example.navigation.Navigator
 import dagger.Module
 import dagger.Provides
@@ -28,7 +28,7 @@ object HomeDatabaseModule {
         Room.databaseBuilder(
             context,
             StoreDatabase::class.java,
-            DATABASE_NAME
+            DATABASE_STORE_NAME
         ).build()
 
     @Singleton

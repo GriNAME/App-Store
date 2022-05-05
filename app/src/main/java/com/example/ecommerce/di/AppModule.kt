@@ -1,6 +1,5 @@
 package com.example.ecommerce.di
 
-import android.content.Context
 import com.example.details.domain.repository.DetailsRepository
 import com.example.details.domain.usecase.GetDetailsUseCase
 import com.example.homestore_api.domain.repository.Repository

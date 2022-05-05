@@ -7,7 +7,8 @@
         <entry key="..\:/Android/AndroidProjects/App-Store/app/src/main/res/layout/bottom_sheet_home_filter.xml" value="0.3625" />
         <entry key="..\:/Android/AndroidProjects/App-Store/app/src/main/res/layout/fragment_home.xml" value="0.3569230769230769" />
         <entry key="..\:/Android/AndroidProjects/App-Store/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2734375" />
-        <entry key="..\:/Android/AndroidProjects/App-Store/feature/cart/src/main/res/layout/fragment_cart.xml" value="0.3296296296296296" />
+        <entry key="..\:/Android/AndroidProjects/App-Store/feature/cart/src/main/res/layout/fragment_cart.xml" value="0.329935125115848" />
+        <entry key="..\:/Android/AndroidProjects/App-Store/feature/cart/src/main/res/layout/row_cart.xml" value="0.33" />
         <entry key="..\:/Android/AndroidProjects/App-Store/feature/details/src/main/res/drawable/color_background.xml" value="0.3185" />
         <entry key="..\:/Android/AndroidProjects/App-Store/feature/details/src/main/res/drawable/color_check_selector.xml" value="0.3185" />
         <entry key="..\:/Android/AndroidProjects/App-Store/feature/details/src/main/res/drawable/color_checked_background.xml" value="0.3225" />
@@ -41,6 +42,7 @@
         <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/circle_background_white_field.xml" value="0.3185" />
         <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/ic_books.xml" value="0.3185" />
         <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/ic_check.xml" value="0.3225" />
+        <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/ic_delete.xml" value="0.3225" />
         <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/ic_dot.xml" value="0.1555" />
         <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/ic_favorite.xml" value="0.3225" />
         <entry key="..\:/Android/AndroidProjects/App-Store/shared/commonui/src/main/res/drawable/ic_heart.xml" value="0.3225" />
