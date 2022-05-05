@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -12,12 +13,16 @@ import com.example.homestore.R
 import com.example.homestore.databinding.RowBestSellerBinding
 import com.example.homestore.presentation.ui.util.ListDiffUtil
 import com.example.homestore_api.domain.model.BestSeller
+import com.example.navigation.NavigationFlow
+import com.example.navigation.ToFlowNavigatable
 
-class BestSellerAdapter : RecyclerView.Adapter<BestSellerAdapter.ViewHolder>() {
+class BestSellerAdapter(
+    private val requireActivity: FragmentActivity
+) : RecyclerView.Adapter<BestSellerAdapter.ViewHolder>() {
 
     private var bestSellers = emptyList<BestSeller>()
 
-    class ViewHolder(private val binding: RowBestSellerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: RowBestSellerBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(bestSeller: BestSeller) {
             binding.apply {
@@ -26,6 +31,7 @@ class BestSellerAdapter : RecyclerView.Adapter<BestSellerAdapter.ViewHolder>() {
 
                 root.setOnClickListener {
                     Toast.makeText(context, "Navigate to ${bestSeller.title}", Toast.LENGTH_SHORT).show()
+                    (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.DetailsFlow)
                 }
 
                 bestSellerName.text = bestSeller.title

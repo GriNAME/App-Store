@@ -1,10 +1,10 @@
 package com.example.commonui.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.commonui.R
 import com.example.commonui.databinding.ActivityMainBinding
@@ -16,12 +16,15 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ToFlowNavigatable {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     @Inject lateinit var navigator: Navigator
+
+    private var backPressed: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,14 +48,18 @@ class MainActivity : AppCompatActivity(), ToFlowNavigatable {
 
         navigator.navController = navController
 
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.home_store_flow,
-//                R.id.details_flow
-//            )
-//        )
-
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        navController.popBackStack()
+        (this as ToFlowNavigatable).navigateToFlow(NavigationFlow.HomeStoreFlow)
+        if (backPressed + 2000 > System.currentTimeMillis()) super.onBackPressed()
+        else Toast.makeText(
+            baseContext, "Press once again to exit!",
+            Toast.LENGTH_SHORT
+        ).show()
+        backPressed = System.currentTimeMillis()
     }
 
     override fun navigateToFlow(flow: NavigationFlow) {

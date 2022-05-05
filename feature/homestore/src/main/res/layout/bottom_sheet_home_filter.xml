@@ -50,6 +50,7 @@
         app:srcCompat="@drawable/ic_close"
         app:tint="@color/white"
         tools:ignore="TouchTargetSizeCheck"
+        android:contentDescription="TODO"
         />
 
     <TextView

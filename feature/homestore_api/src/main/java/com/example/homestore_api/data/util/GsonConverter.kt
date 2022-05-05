@@ -55,4 +55,14 @@ class GsonConverter {
         val type = object : TypeToken<List<HotSalesEntity>>() {}.type
         return gson.fromJson(homeStoreJson, type)
     }
+
+    @TypeConverter
+    fun capacityToJson(capacities: List<String>): String =
+        gson.toJson(capacities)
+
+    @TypeConverter
+    fun capacityFromJson(capacity: String): List<String> {
+        val type = object : TypeToken<List<String>>() {}.type
+        return gson.fromJson(capacity, type)
+    }
 }

@@ -4,18 +4,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.homestore.databinding.RowHotSaleBinding
 import com.example.homestore.presentation.ui.util.ListDiffUtil
 import com.example.homestore_api.domain.model.HotSales
+import com.example.navigation.NavigationFlow
+import com.example.navigation.ToFlowNavigatable
 
-class HotSalesAdapter : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
+class HotSalesAdapter(
+    private val requireActivity: FragmentActivity
+) : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
 
     private var hotSales = emptyList<HotSales>()
 
-    class ViewHolder(private val binding: RowHotSaleBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: RowHotSaleBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hotSale: HotSales) {
 
@@ -28,10 +33,12 @@ class HotSalesAdapter : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
 
                 hotSaleButton.setOnClickListener {
                     Toast.makeText(context, "Start buying ${hotSale.title}", Toast.LENGTH_SHORT).show()
+                    (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.CartFlow)
                 }
 
                 root.setOnClickListener {
                     Toast.makeText(context, "Navigate to ${hotSale.title}", Toast.LENGTH_SHORT).show()
+                    (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.DetailsFlow)
                 }
 
                 hotSale.isNew.let {

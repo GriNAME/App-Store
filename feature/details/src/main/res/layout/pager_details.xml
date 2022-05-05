@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/processor_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toStartOf="@id/camera_pic"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_processor"
+        />
+
+    <TextView
+        android:id="@+id/processor_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="Exynos 990"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/processor_pic"
+        app:layout_constraintStart_toStartOf="@id/processor_pic"
+        app:layout_constraintTop_toBottomOf="@id/processor_pic"
+        />
+
+
+    <ImageView
+        android:id="@+id/camera_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/processor_text"
+        app:layout_constraintEnd_toStartOf="@id/ram_pic"
+        app:layout_constraintStart_toEndOf="@id/processor_pic"
+        app:srcCompat="@drawable/ic_camera"
+        />
+
+    <TextView
+        android:id="@+id/camera_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="108 + 12 mp"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/camera_pic"
+        app:layout_constraintStart_toStartOf="@id/camera_pic"
+        app:layout_constraintTop_toTopOf="@id/processor_text"
+        />
+
+
+    <ImageView
+        android:id="@+id/ram_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/processor_text"
+        app:layout_constraintEnd_toStartOf="@id/rom_pic"
+        app:layout_constraintStart_toEndOf="@id/camera_pic"
+        app:srcCompat="@drawable/ic_ram"
+        />
+
+    <TextView
+        android:id="@+id/ram_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="8 GB"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/ram_pic"
+        app:layout_constraintStart_toStartOf="@+id/ram_pic"
+        app:layout_constraintTop_toTopOf="@id/processor_text"
+        />
+
+
+    <ImageView
+        android:id="@+id/rom_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/rom_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ram_pic"
+        app:srcCompat="@drawable/ic_rom"
+        />
+
+    <TextView
+        android:id="@+id/rom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="256 gb"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/rom_pic"
+        app:layout_constraintStart_toStartOf="@id/rom_pic"
+        app:layout_constraintTop_toTopOf="@id/processor_text"
+        />
+
+
+    <TextView
+        android:id="@+id/select_color_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="20dp"
+        android:text="Select color and capacity"
+        android:textColor="@color/primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/processor_text"
+        />
+
+    <RadioGroup
+        android:id="@+id/select_color_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:checkedButton="@id/brown_rb"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_color_text"
+        >
+
+        <RadioButton
+            android:id="@+id/brown_rb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/color_checked_background"
+            android:button="@android:color/transparent"
+            android:drawableStart="@drawable/ic_check"
+            android:drawableTint="@color/check_icon_color_selector"
+            android:paddingStart="12dp"
+            app:backgroundTint="@color/brown"
+            tools:backgroundTint="@color/brown"
+            tools:ignore="TouchTargetSizeCheck"
+            />
+
+        <RadioButton
+            android:id="@+id/blue_rb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/color_checked_background"
+            android:button="@android:color/transparent"
+            android:drawableStart="@drawable/ic_check"
+            android:drawableTint="@color/check_icon_color_selector"
+            android:paddingStart="12dp"
+            tools:ignore="TouchTargetSizeCheck"
+            />
+    </RadioGroup>
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:checkedButton="@id/rom_128_rb"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/select_color_rg"
+        app:layout_constraintStart_toEndOf="@id/select_color_rg"
+        app:layout_constraintTop_toTopOf="@id/select_color_rg"
+        >
+
+        <RadioButton
+            android:id="@+id/rom_128_rb"
+            android:layout_width="72dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/gb_check_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="128 GB"
+            android:textColor="@color/check_item_gb"
+            android:textStyle="bold"
+            tools:backgroundTint="@color/accent"
+            tools:ignore="TouchTargetSizeCheck"
+            />
+
+        <RadioButton
+            android:id="@+id/rom_256_rb"
+            android:layout_width="72dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/gb_check_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="256 GB"
+            android:textColor="@color/check_item_gb"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck"
+            />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

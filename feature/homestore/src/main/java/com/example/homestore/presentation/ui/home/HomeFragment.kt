@@ -28,6 +28,7 @@ import com.example.homestore.presentation.viewmodel.MainViewModel
 import com.example.navigation.NavigationFlow
 import com.example.navigation.Navigator
 import com.example.navigation.ToFlowNavigatable
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -38,13 +39,17 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val mainViewModel: MainViewModel by viewModels()
-    @Inject lateinit var navigator: Navigator
 
-    private val bestSellerAdapter = BestSellerAdapter()
-    private val hotSalesAdapter = HotSalesAdapter()
+    @Inject
+    lateinit var navigator: Navigator
+
+    private lateinit var bestSellerAdapter: BestSellerAdapter
+    private lateinit var hotSalesAdapter: HotSalesAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        bestSellerAdapter = BestSellerAdapter(requireActivity())
+        hotSalesAdapter = HotSalesAdapter(requireActivity())
         return binding.root
     }
 
@@ -59,7 +64,13 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.mainToolbar)
         initRecyclerViews()
         initMoreTexts()
+
+        val navBar: BottomNavigationView =
+            requireActivity().findViewById(com.example.commonui.R.id.bottom_navigation_view)
+        navBar.visibility = View.VISIBLE
     }
+
+
 
     override fun onResume() {
         super.onResume()

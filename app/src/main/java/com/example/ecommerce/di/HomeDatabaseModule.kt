@@ -16,15 +16,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+object HomeDatabaseModule {
 
     @Singleton
     @Provides
-    fun provideLocalSource(storeDao: StoreDao) = LocalSource(storeDao = storeDao)
+    fun provideLocalSource(storeDao: StoreDao): LocalSource = LocalSource(storeDao)
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context) =
+    fun provideDatabase(@ApplicationContext context: Context): StoreDatabase =
         Room.databaseBuilder(
             context,
             StoreDatabase::class.java,
@@ -33,7 +33,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideHomeDao(shopDatabase: StoreDatabase) = shopDatabase.getStoreDao()
+    fun provideHomeDao(shopDatabase: StoreDatabase): StoreDao = shopDatabase.getStoreDao()
 
     @Singleton
     @Provides

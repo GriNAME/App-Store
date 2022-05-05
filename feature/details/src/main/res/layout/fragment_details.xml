@@ -5,20 +5,225 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     tools:context=".presentation.ui.DetailsFragment"
     >
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Details"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/background_rectangle"
+                android:contentDescription="TODO"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_back"
+                app:tint="@color/white"
+                tools:ignore="TouchTargetSizeCheck"
+                />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Details"
+                android:textColor="@color/primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageButton
+                android:id="@+id/cart_button"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_rectangle"
+                android:contentDescription="TODO"
+                app:backgroundTint="@color/accent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_shop"
+                app:tint="@color/white"
+                tools:backgroundTint="@color/accent"
+                tools:ignore="TouchTargetSizeCheck"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager_pictures"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/info_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/info_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewpager_pictures"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Galaxy Note 20 Ultra"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toTopOf="@id/top_guideline"
+                />
+
+            <ImageButton
+                android:id="@+id/add_to_favorite_button"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:background="@drawable/background_rectangle"
+                android:contentDescription="TODO"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintTop_toTopOf="@id/top_guideline"
+                app:srcCompat="@drawable/ic_favorite_outline"
+                app:tint="@color/white"
+                tools:ignore="TouchTargetSizeCheck"
+                />
+
+            <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                android:id="@+id/rating_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/title_details"
+                app:srb_numberOfStars="5"
+                app:srb_rating="1.5"
+                app:srb_starSize="20dp"
+                app:srb_stepSize="0.5"
+                />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs_details"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rating_details"
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabIndicatorColor="@color/accent"
+                app:tabIndicatorFullWidth="false"
+                app:tabSelectedTextColor="@color/primary"
+                app:tabTextColor="@color/gray"
+                app:title="Animals"
+                app:titleTextColor="@color/accent"
+                />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toTopOf="@id/add_to_cart_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabs_details"
+                app:layout_constraintVertical_bias="0.0"
+                tools:background="#ddd"
+                tools:layout="@layout/pager_details"
+                tools:layout_height="200dp"
+                />
+
+            <Button
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:background="@drawable/background_rectangle"
+                android:text="Add to cart"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:backgroundTint="@color/accent"
+                app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/top_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="24dp"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/bottom_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="24dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

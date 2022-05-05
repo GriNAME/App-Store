@@ -7,15 +7,15 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocalSource @Inject constructor(
-    private val storeDao: StoreDao
+    private val dao: StoreDao
 ) {
 
     fun getAllData(): Flow<ResultWithBestSellersAndHotSales> =
-        storeDao.findAll()
+        dao.findAll()
 
     suspend fun insertAllResults(resultEntities: ResultWithBestSellersAndHotSales) =
-        storeDao.insertAllResults(resultEntities)
+        dao.insertAllResults(resultEntities)
 
     fun searchBestSellerByTitle(searchQuery: String): Flow<List<BestSellerEntity>> =
-        storeDao.searchBestSellerByTitle(searchQuery)
+        dao.searchBestSellerByTitle(searchQuery)
 }
