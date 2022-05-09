@@ -16,6 +16,7 @@
 
     <color name="brown">#772D03</color>
     <color name="dark_blue">#36364D</color>
+    <color name="disable_white">#4DFFFFFF</color>
 
     <color name="transparent">#00000000</color>
 </resources>

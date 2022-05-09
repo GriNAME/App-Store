@@ -3,6 +3,7 @@ package com.example.cart.data.storage.model
 
 import androidx.room.ColumnInfo
 import com.example.cart.data.api.model.BasketDto
+import com.example.cart.domain.model.Basket
 
 data class BasketEntity(
     @ColumnInfo(name = "id")
@@ -24,4 +25,15 @@ fun BasketDto.mapToEntity() = BasketEntity(
 
 fun List<BasketDto>.mapToEntities() = map {
     it.mapToEntity()
+}
+
+fun BasketEntity.mapToModel() = Basket(
+    id,
+    images,
+    price,
+    title
+)
+
+fun List<BasketEntity>.mapToModels() = map {
+    it.mapToModel()
 }

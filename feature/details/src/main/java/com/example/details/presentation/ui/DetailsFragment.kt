@@ -49,7 +49,7 @@ class DetailsFragment : Fragment() {
 
 
     private fun initToolbar() {
-        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         binding.apply {
 
             cartButton.setOnClickListener {

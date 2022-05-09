@@ -19,7 +19,6 @@ class DetailsRepositoryImpl @Inject constructor(
             flow {
                 val entity = remote.getDetails().mapToEntity()
                 local.insertDetails(entity)
-
                 emit(entity.mapToModel())
             }
         } else {

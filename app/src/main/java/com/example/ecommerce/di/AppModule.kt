@@ -1,5 +1,7 @@
 package com.example.ecommerce.di
 
+import com.example.cart.domain.repository.CartRepository
+import com.example.cart.domain.usecase.GetCartUseCase
 import com.example.details.domain.repository.DetailsRepository
 import com.example.details.domain.usecase.GetDetailsUseCase
 import com.example.homestore_api.domain.repository.Repository
@@ -23,4 +25,9 @@ object AppModule {
     @Provides
     fun provideGetDetailsUseCase(repository: DetailsRepository): GetDetailsUseCase =
         GetDetailsUseCase(repository)
+
+    @ViewModelScoped
+    @Provides
+    fun provideGetCartUseCase(repository: CartRepository): GetCartUseCase =
+        GetCartUseCase(repository)
 }

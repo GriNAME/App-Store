@@ -2,6 +2,10 @@ package com.example.ecommerce.di
 
 import android.content.Context
 import com.example.cart.data.api.CartApi
+import com.example.cart.data.repository.CartLocalSource
+import com.example.cart.data.repository.CartRemoteSource
+import com.example.cart.data.repository.CartRepositoryImpl
+import com.example.cart.domain.repository.CartRepository
 import com.example.details.data.api.DetailsApi
 import com.example.details.data.repository.DetailsLocalSource
 import com.example.details.data.repository.DetailsRemoteSource
@@ -33,8 +37,18 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideDetailsRepository(remoteSource: DetailsRemoteSource, localSource: DetailsLocalSource) : DetailsRepository =
-        DetailsRepositoryImpl(local = localSource, remote = remoteSource)
+    fun provideDetailsRepository(remoteSource: DetailsRemoteSource, localSource: DetailsLocalSource): DetailsRepository =
+        DetailsRepositoryImpl(remote = remoteSource, local = localSource)
+
+    @Singleton
+    @Provides
+    fun provideCartRepository(remoteSource: CartRemoteSource, localSource: CartLocalSource): CartRepository =
+        CartRepositoryImpl(remote = remoteSource, local = localSource)
+
+    @Singleton
+    @Provides
+    fun provideHomeStoreRemoteSource(api: HomeShopApi, @ApplicationContext context: Context): RemoteSource =
+        RemoteSource(api = api, context = context)
 
     @Singleton
     @Provides
@@ -43,8 +57,8 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideHomeStoreRemoteSource(api: HomeShopApi, @ApplicationContext context: Context): RemoteSource =
-        RemoteSource(api = api, context = context)
+    fun provideCartRemoteSource(api: CartApi, @ApplicationContext context: Context): CartRemoteSource =
+        CartRemoteSource(api = api, context = context)
 
     @Singleton
     @Provides
