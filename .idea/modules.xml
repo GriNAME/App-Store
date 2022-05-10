@@ -4,15 +4,39 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ECOMMERCE.iml" filepath="$PROJECT_DIR$/.idea/modules/ECOMMERCE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ECOMMERCE.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/ECOMMERCE.feature.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/ECOMMERCE.feature.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/cart/ECOMMERCE.feature.cart.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore_api/ECOMMERCE.feature.homestore_api.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/ECOMMERCE.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/ECOMMERCE.shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/commonui/ECOMMERCE.shared.commonui.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/core/ECOMMERCE.shared.core.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/navigation/ECOMMERCE.shared.navigation.unitTest.iml" />
     </modules>
   </component>
 </project>

@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.details.R
 import com.example.details.databinding.FragmentDetailsBinding
 import com.example.details.presentation.ui.adapter.FeaturesPagerAdapter
@@ -21,6 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import kotlin.math.abs
 
 
 @AndroidEntryPoint
@@ -66,9 +70,23 @@ class DetailsFragment : Fragment() {
         detailsViewModel.details.observe(viewLifecycleOwner) { details ->
             val picturesPagerAdapter = PicturesPagerAdapter(details.images)
 
+            val marginPageTransformer = MarginPageTransformer(150)
+
             binding.viewpagerPictures.apply {
                 adapter = picturesPagerAdapter
                 clipToPadding = false
+                clipChildren = false
+                offscreenPageLimit = 3
+                getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+                val composPageTran = CompositePageTransformer()
+                composPageTran.addTransformer(MarginPageTransformer(0))
+                composPageTran.addTransformer { page, position ->
+                    val r: Float = 1 - abs(position)
+                    page.scaleY = 0.6f + r * 0.2f
+                }
+
+                setPageTransformer(composPageTran)
             }
 
             binding.apply {
