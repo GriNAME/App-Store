@@ -1,6 +1,7 @@
 package com.example.commonui.ui
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -39,11 +40,17 @@ class MainActivity : AppCompatActivity(), ToFlowNavigatable {
     }
 
     private fun initBottomNavigation() {
+        val size = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            30f,
+            resources.displayMetrics
+        )
+
         val bottomNavigationViewBackground = binding.bottomNavigationView.background as MaterialShapeDrawable
         bottomNavigationViewBackground.shapeAppearanceModel =
             bottomNavigationViewBackground.shapeAppearanceModel.toBuilder()
-                .setTopRightCorner(CornerFamily.ROUNDED, 80F)
-                .setTopLeftCorner(CornerFamily.ROUNDED, 80F)
+                .setTopRightCorner(CornerFamily.ROUNDED, size)
+                .setTopLeftCorner(CornerFamily.ROUNDED, size)
                 .build()
 
         navigator.navController = navController

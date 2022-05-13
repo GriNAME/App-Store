@@ -125,41 +125,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:checkedButton="@id/brown_rb"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/select_color_text"
-        >
-
-        <RadioButton
-            android:id="@+id/brown_rb"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/color_checked_background"
-            android:button="@android:color/transparent"
-            android:drawableStart="@drawable/ic_check"
-            android:drawableTint="@color/check_icon_color_selector"
-            android:paddingStart="12dp"
-            app:backgroundTint="@color/brown"
-            tools:backgroundTint="@color/brown"
-            tools:ignore="TouchTargetSizeCheck"
-            />
-
-        <RadioButton
-            android:id="@+id/blue_rb"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/color_checked_background"
-            android:button="@android:color/transparent"
-            android:drawableStart="@drawable/ic_check"
-            android:drawableTint="@color/check_icon_color_selector"
-            android:paddingStart="12dp"
-            tools:ignore="TouchTargetSizeCheck"
-            />
-    </RadioGroup>
+        />
 
 
     <RadioGroup
