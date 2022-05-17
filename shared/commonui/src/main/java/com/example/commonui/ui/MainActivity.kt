@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), ToFlowNavigatable {
     }
 
     private fun initBottomNavigation() {
-        val size = TypedValue.applyDimension(
+        val sizeDp = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             30f,
             resources.displayMetrics
@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity(), ToFlowNavigatable {
         val bottomNavigationViewBackground = binding.bottomNavigationView.background as MaterialShapeDrawable
         bottomNavigationViewBackground.shapeAppearanceModel =
             bottomNavigationViewBackground.shapeAppearanceModel.toBuilder()
-                .setTopRightCorner(CornerFamily.ROUNDED, size)
-                .setTopLeftCorner(CornerFamily.ROUNDED, size)
+                .setTopRightCorner(CornerFamily.ROUNDED, sizeDp)
+                .setTopLeftCorner(CornerFamily.ROUNDED, sizeDp)
                 .build()
 
         navigator.navController = navController

@@ -6,11 +6,6 @@ import com.example.cart.data.repository.CartLocalSource
 import com.example.cart.data.repository.CartRemoteSource
 import com.example.cart.data.repository.CartRepositoryImpl
 import com.example.cart.domain.repository.CartRepository
-import com.example.details.data.api.DetailsApi
-import com.example.details.data.repository.DetailsLocalSource
-import com.example.details.data.repository.DetailsRemoteSource
-import com.example.details.data.repository.DetailsRepositoryImpl
-import com.example.details.domain.repository.DetailsRepository
 import com.example.homestore_api.data.api.HomeShopApi
 import com.example.homestore_api.data.repository.LocalSource
 import com.example.homestore_api.data.repository.RemoteSource
@@ -37,8 +32,8 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideDetailsRepository(remoteSource: DetailsRemoteSource, localSource: DetailsLocalSource): DetailsRepository =
-        DetailsRepositoryImpl(remote = remoteSource, local = localSource)
+    fun provideDetailsRepository(remoteSource: com.example.details_api.data.repository.DetailsRemoteSource, localSource: com.example.details_api.data.repository.DetailsLocalSource): com.example.details_api.domain.repository.DetailsRepository =
+        com.example.details_api.data.repository.DetailsRepositoryImpl(remote = remoteSource, local = localSource)
 
     @Singleton
     @Provides
@@ -52,8 +47,8 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideDetailsRemoteSource(api: DetailsApi, @ApplicationContext context: Context): DetailsRemoteSource =
-        DetailsRemoteSource(api = api, context = context)
+    fun provideDetailsRemoteSource(api: com.example.details_api.data.api.DetailsApi, @ApplicationContext context: Context): com.example.details_api.data.repository.DetailsRemoteSource =
+        com.example.details_api.data.repository.DetailsRemoteSource(api = api, context = context)
 
     @Singleton
     @Provides
@@ -76,8 +71,8 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideDetailsApi(retrofit: Retrofit): DetailsApi =
-        retrofit.create(DetailsApi::class.java)
+    fun provideDetailsApi(retrofit: Retrofit): com.example.details_api.data.api.DetailsApi =
+        retrofit.create(com.example.details_api.data.api.DetailsApi::class.java)
 
     @Singleton
     @Provides

@@ -2,9 +2,9 @@ package com.example.ecommerce.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.details.data.repository.DetailsLocalSource
-import com.example.details.data.storage.DetailsDao
-import com.example.details.data.storage.DetailsDatabase
+import com.example.details_api.data.repository.DetailsLocalSource
+import com.example.details_api.data.storage.DetailsDao
+import com.example.details_api.data.storage.DetailsDatabase
 import com.example.homestore_api.data.util.Constants.DATABASE_DETAILS_NAME
 import dagger.Module
 import dagger.Provides
@@ -19,7 +19,8 @@ object DetailsDatabaseModule {
 
     @Singleton
     @Provides
-    fun provideLocalSource(dao: DetailsDao): DetailsLocalSource = DetailsLocalSource(dao)
+    fun provideLocalSource(dao: DetailsDao): DetailsLocalSource =
+        DetailsLocalSource(dao)
 
     @Singleton
     @Provides

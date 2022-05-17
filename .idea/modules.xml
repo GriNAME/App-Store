@@ -16,6 +16,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details/ECOMMERCE.feature.details.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/details_api/ECOMMERCE.feature.details_api.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/homestore/ECOMMERCE.feature.homestore.main.iml" />

@@ -16,9 +16,9 @@
         android:icon="@drawable/ic_favorite_outline"
         android:title="@string/favorite" />
 
-<!--    <item-->
-<!--        android:id="@+id/homeFilterBottomSheet"-->
-<!--        android:icon="@drawable/ic_profile"-->
-<!--        android:title="@string/profile" />-->
+    <item
+        android:id="@id/details_flow"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
 
 </menu>

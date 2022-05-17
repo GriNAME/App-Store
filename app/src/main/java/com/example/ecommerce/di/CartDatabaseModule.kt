@@ -5,8 +5,6 @@ import androidx.room.Room
 import com.example.cart.data.repository.CartLocalSource
 import com.example.cart.data.storage.CartDao
 import com.example.cart.data.storage.CartDatabase
-import com.example.homestore_api.data.storage.StoreDao
-import com.example.homestore_api.data.storage.StoreDatabase
 import com.example.homestore_api.data.util.Constants.DATABASE_CART_NAME
 import dagger.Module
 import dagger.Provides

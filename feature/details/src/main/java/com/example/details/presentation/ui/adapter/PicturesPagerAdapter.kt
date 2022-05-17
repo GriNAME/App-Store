@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.details.databinding.PagerPictureBinding
-import com.example.details.domain.model.Details
 
 class PicturesPagerAdapter(private val urls: List<String>) : RecyclerView.Adapter<PicturesPagerAdapter.MyViewHolder>() {
 

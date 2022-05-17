@@ -103,9 +103,12 @@ class DetailsFragment : Fragment() {
 
                 val dec = DecimalFormat("#,###.00", DecimalFormatSymbols(Locale.ENGLISH))
                 var str: String = dec.format(details.price.toDouble())
-                addToCartButton.text = "Add to cart      $$str"
-                addToCartButton.setOnClickListener {
-                    (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.CartFlow)
+
+                addToCartButton.apply {
+                    text = "Add to cart      $$str"
+                    setOnClickListener {
+                        (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.CartFlow)
+                    }
                 }
             }
         }

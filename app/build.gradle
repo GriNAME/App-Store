@@ -49,6 +49,7 @@ dependencies {
     implementation project(":feature:homestore")
     implementation project(":feature:homestore_api")
     implementation project(":feature:details")
+    implementation project(":feature:details_api")
     implementation project(":feature:cart")
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
