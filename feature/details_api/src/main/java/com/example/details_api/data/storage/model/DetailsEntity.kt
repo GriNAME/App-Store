@@ -3,6 +3,7 @@ package com.example.details_api.data.storage.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.details_api.data.api.model.DetailsDto
 import com.example.details_api.domain.model.Details
 import com.example.homestore_api.data.util.Constants.TABLE_DETAILS_NAME
 
@@ -35,7 +36,7 @@ data class DetailsEntity(
     val title: String
 )
 
-fun com.example.details_api.data.api.model.DetailsDto.mapToEntity() = DetailsEntity(
+fun DetailsDto.mapToEntity() = DetailsEntity(
     id,
     cPU,
     camera,

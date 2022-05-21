@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.cart.data.api.model.CartDto
-import com.example.cart.domain.model.Cart
+import com.example.cart.domain.model.CartInfo
 import com.example.homestore_api.data.util.Constants.TABLE_CART_NAME
 
 @Entity(tableName = TABLE_CART_NAME)
@@ -28,7 +28,7 @@ fun CartDto.mapToEntity() = CartEntity(
     total
 )
 
-fun CartEntity.mapToModel() = Cart(
+fun CartEntity.mapToModel() = CartInfo(
     basket.mapToModels(),
     delivery,
     id,

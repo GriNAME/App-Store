@@ -2,7 +2,7 @@ package com.example.cart.data.repository
 
 import com.example.cart.data.storage.model.mapToEntity
 import com.example.cart.data.storage.model.mapToModel
-import com.example.cart.domain.model.Cart
+import com.example.cart.domain.model.CartInfo
 import com.example.cart.domain.repository.CartRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,7 +14,7 @@ class CartRepositoryImpl @Inject constructor(
     private val remote: CartRemoteSource
 ) : CartRepository{
 
-    override fun getCart(): Flow<Cart> =
+    override fun getCart(): Flow<CartInfo> =
         if (remote.hasInternetConnection()) {
             flow {
                 val entity = remote.getCart().mapToEntity()

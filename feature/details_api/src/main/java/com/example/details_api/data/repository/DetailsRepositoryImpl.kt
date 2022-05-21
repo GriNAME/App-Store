@@ -2,6 +2,7 @@ package com.example.details_api.data.repository
 
 import com.example.details_api.data.storage.model.mapToEntity
 import com.example.details_api.data.storage.model.mapToModel
+import com.example.details_api.domain.model.Product
 import com.example.details_api.domain.model.Details
 import com.example.details_api.domain.repository.DetailsRepository
 import kotlinx.coroutines.flow.Flow
@@ -28,4 +29,22 @@ class DetailsRepositoryImpl @Inject constructor(
                 }
             }
         }
+
+    override fun getCartList(): Flow<List<Product>> =
+        local.getCartList().let { flow ->
+            flow.map { list ->
+                list.map {
+                    it.mapToModel()
+                }
+            }
+        }
+
+
+    override suspend fun insertDetails(details: Details) {
+        local.insertCart(details)
+    }
+
+    override suspend fun deleteItemFromCart(product: Product) {
+        local.deleteItemFromCart(product)
+    }
 }

@@ -46,13 +46,17 @@ class DetailsFragment : Fragment() {
         initFeaturesPagerAdapter()
         initPicturesPagerAdapter()
 
-        val navBar: BottomNavigationView = requireActivity().findViewById(com.example.commonui.R.id.bottom_navigation_view)
+        val navBar: BottomNavigationView =
+            requireActivity().findViewById(com.example.commonui.R.id.bottom_navigation_view)
         navBar.visibility = View.GONE
     }
 
 
-
     private fun initToolbar() {
+
+//        val navHostFragment = NavHostFragment.findNavController(this);
+//        NavigationUI.setupWithNavController(binding.toolbar, navHostFragment)
+
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         binding.apply {
 
@@ -62,6 +66,10 @@ class DetailsFragment : Fragment() {
 
             backButton.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            detailsViewModel.productList.observe(viewLifecycleOwner) {
+                goodsCounterText.text = it.size.toString()
             }
         }
     }
@@ -102,12 +110,12 @@ class DetailsFragment : Fragment() {
                 }
 
                 val dec = DecimalFormat("#,###.00", DecimalFormatSymbols(Locale.ENGLISH))
-                var str: String = dec.format(details.price.toDouble())
+                val str: String = dec.format(details.price.toDouble())
 
                 addToCartButton.apply {
                     text = "Add to cart      $$str"
                     setOnClickListener {
-                        (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.CartFlow)
+                        detailsViewModel.insertDetails(details)
                     }
                 }
             }
@@ -119,7 +127,7 @@ class DetailsFragment : Fragment() {
 
         binding.viewpagerDetails.adapter = pagerAdapter
 
-        TabLayoutMediator(binding.tabsDetails, binding.viewpagerDetails) { tab, position->
+        TabLayoutMediator(binding.tabsDetails, binding.viewpagerDetails) { tab, position ->
             val tabNames = listOf("Shop", "Details", "Features")
             tab.text = tabNames[position]
         }.attach()

@@ -21,6 +21,7 @@ object Constants {
     /** Cart */
     const val DATABASE_CART_NAME = "cart_database"
     const val TABLE_CART_NAME = "cart_table"
+    const val TABLE_PRODUCT_NAME = "product_table"
 }
 
 

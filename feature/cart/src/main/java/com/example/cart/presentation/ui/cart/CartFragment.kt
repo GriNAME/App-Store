@@ -22,7 +22,7 @@ class CartFragment : Fragment() {
     private val binding get() = _binding!!
     private val cartViewModel by viewModels<CartViewModel>()
 
-    private lateinit var cartAdapter: CartAdapter
+    private val cartAdapter by lazy { CartAdapter(requireActivity(), cartViewModel) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
@@ -32,17 +32,25 @@ class CartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val navBar: BottomNavigationView = requireActivity().findViewById(com.example.commonui.R.id.bottom_navigation_view)
+        val navBar: BottomNavigationView =
+            requireActivity().findViewById(com.example.commonui.R.id.bottom_navigation_view)
         navBar.visibility = View.GONE
 
         initToolbar()
         initCartRecyclerView()
 
+        var counter = 0
+        cartViewModel.productList.observe(viewLifecycleOwner) { list ->
+            for (cart in list) {
+                counter += cart.price
+            }
+            binding.totalPriceText.text = counter.toString()
+        }
     }
 
     private fun initCartRecyclerView() {
-        cartViewModel.cart.observe(viewLifecycleOwner) {
-            cartAdapter = CartAdapter(requireActivity(), it.basket)
+        cartViewModel.productList.observe(viewLifecycleOwner) {
+            cartAdapter.setData(it)
 
             binding.cartRecyclerView.apply {
                 adapter = cartAdapter
@@ -52,6 +60,10 @@ class CartFragment : Fragment() {
     }
 
     private fun initToolbar() {
+
+//        val navHostFragment = NavHostFragment.findNavController(this);
+//        NavigationUI.setupWithNavController(binding.toolbar, navHostFragment)
+
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
         binding.backButton.setOnClickListener {

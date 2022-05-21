@@ -1,39 +1,50 @@
 package com.example.cart.presentation.ui.cart.adapter
 
-import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.cart.R
 import com.example.cart.databinding.RowCartBinding
-import com.example.cart.domain.model.Basket
+import com.example.cart.presentation.viewmodel.CartViewModel
+import com.example.cart.util.CartDiffUtil
+import com.example.details_api.domain.model.Product
 import com.example.navigation.NavigationFlow
 import com.example.navigation.ToFlowNavigatable
 
 class CartAdapter(
     private val requireActivity: FragmentActivity,
-    private val basket: List<Basket>
+    private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+
+    private var productList = emptyList<Product>()
+
+    fun setData(newProductList: List<Product>) {
+        val cartDiffUtil = CartDiffUtil(productList, newProductList)
+        val resultDiffUtil = DiffUtil.calculateDiff(cartDiffUtil)
+        productList = newProductList
+        resultDiffUtil.dispatchUpdatesTo(this)
+    }
 
     inner class ViewHolder(private val binding: RowCartBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private var counter: Int = 1
 
-        fun bind(basket: Basket) {
+        fun bind(product: Product) {
             binding.apply {
-                basket.images.let {
+                product.images.first().let {
                     productImage.load(it)
                 }
-                productTitleText.text = basket.title
+                productTitleText.text = product.title
                 productTitleText.setOnClickListener {
                     (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.DetailsFlow)
                 }
 
-                productPrice.text = basket.price.toString()
+                productPrice.text = product.price.toString()
 
                 productPlusButton.setOnClickListener {
                     counter = ++counter
@@ -62,6 +73,7 @@ class CartAdapter(
                 }
 
                 deleteButton.setOnClickListener {
+                    cartViewModel.deleteItemFromCart(product)
                     Toast.makeText(root.context, "${productTitleText.text} deleted", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -74,8 +86,8 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(basket[position])
+        holder.bind(productList[position])
     }
 
-    override fun getItemCount(): Int = basket.size
+    override fun getItemCount(): Int = productList.size
 }
