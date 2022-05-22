@@ -1,9 +1,7 @@
 package com.example.ecommerce.di
 
 import android.content.Context
-import com.example.cart.data.api.CartApi
 import com.example.cart.data.repository.CartLocalSource
-import com.example.cart.data.repository.CartRemoteSource
 import com.example.cart.data.repository.CartRepositoryImpl
 import com.example.cart.domain.repository.CartRepository
 import com.example.homestore_api.data.api.HomeShopApi
@@ -37,8 +35,8 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideCartRepository(remoteSource: CartRemoteSource, localSource: CartLocalSource): CartRepository =
-        CartRepositoryImpl(remote = remoteSource, local = localSource)
+    fun provideCartRepository(localSource: CartLocalSource): CartRepository =
+        CartRepositoryImpl(local = localSource)
 
     @Singleton
     @Provides
@@ -49,11 +47,6 @@ object ApiModule {
     @Provides
     fun provideDetailsRemoteSource(api: com.example.details_api.data.api.DetailsApi, @ApplicationContext context: Context): com.example.details_api.data.repository.DetailsRemoteSource =
         com.example.details_api.data.repository.DetailsRemoteSource(api = api, context = context)
-
-    @Singleton
-    @Provides
-    fun provideCartRemoteSource(api: CartApi, @ApplicationContext context: Context): CartRemoteSource =
-        CartRemoteSource(api = api, context = context)
 
     @Singleton
     @Provides
@@ -73,9 +66,4 @@ object ApiModule {
     @Provides
     fun provideDetailsApi(retrofit: Retrofit): com.example.details_api.data.api.DetailsApi =
         retrofit.create(com.example.details_api.data.api.DetailsApi::class.java)
-
-    @Singleton
-    @Provides
-    fun provideCartApi(retrofit: Retrofit): CartApi =
-        retrofit.create(CartApi::class.java)
 }

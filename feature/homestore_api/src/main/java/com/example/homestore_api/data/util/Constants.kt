@@ -16,12 +16,13 @@ object Constants {
 
     /** Details */
     const val DATABASE_DETAILS_NAME = "details_database"
-    const val TABLE_DETAILS_NAME = "details_table"
+    const val TABLE_DETAILS_NAME = "details"
 
     /** Cart */
     const val DATABASE_CART_NAME = "cart_database"
-    const val TABLE_CART_NAME = "cart_table"
-    const val TABLE_PRODUCT_NAME = "product_table"
+    const val TABLE_CART_NAME = "cart"
+    const val TABLE_CART_ITEM_NAME = "cart_item"
+    const val TABLE_PRODUCT_NAME = "product"
 }
 
 

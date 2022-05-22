@@ -3,8 +3,9 @@ package com.example.details_api.data.storage.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.homestore_api.data.util.Constants.TABLE_CART_ITEM_NAME
 
-@Entity(tableName = "table_cart_item")
+@Entity(tableName = TABLE_CART_ITEM_NAME)
 data class CartItemEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
