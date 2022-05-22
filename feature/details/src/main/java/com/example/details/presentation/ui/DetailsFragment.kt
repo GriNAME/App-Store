@@ -54,9 +54,6 @@ class DetailsFragment : Fragment() {
 
     private fun initToolbar() {
 
-//        val navHostFragment = NavHostFragment.findNavController(this);
-//        NavigationUI.setupWithNavController(binding.toolbar, navHostFragment)
-
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         binding.apply {
 

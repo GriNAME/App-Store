@@ -12,5 +12,7 @@ interface DetailsRepository {
 
     suspend fun insertDetails(details: Details)
 
+    suspend fun insertProduct()
+
     suspend fun deleteItemFromCart(product: Product)
 }

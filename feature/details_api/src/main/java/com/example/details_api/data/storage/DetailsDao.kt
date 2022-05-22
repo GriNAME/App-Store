@@ -15,17 +15,8 @@ interface DetailsDao {
     @Query("SELECT * FROM details_table")
     fun getDetails(): Flow<DetailsEntity>
 
-    @Query("SELECT * FROM product_table")
-    fun getCartList(): Flow<List<ProductEntity>>
-
     @Insert(onConflict = IGNORE)
     suspend fun insertDetails(detailsEntity: DetailsEntity)
-
-    @Insert(onConflict = IGNORE)
-    suspend fun insertCart(productEntity: ProductEntity)
-
-    @Delete
-    suspend fun deleteItemFromCart(productEntity: ProductEntity)
 
 //    @Query(
 //        "SELECT :oi.orderId, SUM(oi.quantity * p.price) AS grand_total," +

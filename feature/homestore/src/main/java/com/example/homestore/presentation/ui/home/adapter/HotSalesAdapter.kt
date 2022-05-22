@@ -5,17 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.details_api.domain.model.Details
 import com.example.homestore.databinding.RowHotSaleBinding
 import com.example.homestore.presentation.ui.util.ListDiffUtil
+import com.example.homestore.presentation.viewmodel.MainViewModel
 import com.example.homestore_api.domain.model.HotSales
 import com.example.navigation.NavigationFlow
 import com.example.navigation.ToFlowNavigatable
+import kotlinx.coroutines.launch
 
 class HotSalesAdapter(
-    private val requireActivity: FragmentActivity
+    private val requireActivity: FragmentActivity,
+    private val viewModel: MainViewModel,
+    private val lifecycleScope: LifecycleCoroutineScope
 ) : RecyclerView.Adapter<HotSalesAdapter.ViewHolder>() {
 
     private var hotSales = emptyList<HotSales>()
@@ -33,6 +39,9 @@ class HotSalesAdapter(
 
                 hotSaleButton.setOnClickListener {
                     Toast.makeText(context, "Start buying ${hotSale.title}", Toast.LENGTH_SHORT).show()
+                    lifecycleScope.launch {
+                        viewModel.insertProductToCart()
+                    }
                     (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.CartFlow)
                 }
 

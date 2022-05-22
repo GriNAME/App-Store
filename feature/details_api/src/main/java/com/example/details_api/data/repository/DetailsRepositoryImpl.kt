@@ -44,6 +44,10 @@ class DetailsRepositoryImpl @Inject constructor(
         local.insertCart(details)
     }
 
+    override suspend fun insertProduct() {
+        local.insertProduct()
+    }
+
     override suspend fun deleteItemFromCart(product: Product) {
         local.deleteItemFromCart(product)
     }

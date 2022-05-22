@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,17 +40,14 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val mainViewModel: MainViewModel by viewModels()
+    private val bestSellerAdapter by lazy { BestSellerAdapter(requireActivity()) }
+    private val hotSalesAdapter by lazy { HotSalesAdapter(requireActivity(), mainViewModel, lifecycleScope) }
 
     @Inject
     lateinit var navigator: Navigator
 
-    private lateinit var bestSellerAdapter: BestSellerAdapter
-    private lateinit var hotSalesAdapter: HotSalesAdapter
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        bestSellerAdapter = BestSellerAdapter(requireActivity())
-        hotSalesAdapter = HotSalesAdapter(requireActivity())
         return binding.root
     }
 

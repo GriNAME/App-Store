@@ -19,6 +19,9 @@ class GetDetailsUseCase @Inject constructor(
     suspend fun insertDetails(details: Details) =
         repository.insertDetails(details)
 
+    suspend fun insertProduct() =
+        repository.insertProduct()
+
     suspend fun deleteItemFromCart(product: Product) =
         repository.deleteItemFromCart(product)
 }

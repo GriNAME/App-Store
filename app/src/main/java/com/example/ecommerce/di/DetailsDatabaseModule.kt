@@ -3,6 +3,7 @@ package com.example.ecommerce.di
 import android.content.Context
 import androidx.room.Room
 import com.example.details_api.data.repository.DetailsLocalSource
+import com.example.details_api.data.storage.CartDao
 import com.example.details_api.data.storage.DetailsDao
 import com.example.details_api.data.storage.DetailsDatabase
 import com.example.homestore_api.data.util.Constants.DATABASE_DETAILS_NAME
@@ -19,8 +20,8 @@ object DetailsDatabaseModule {
 
     @Singleton
     @Provides
-    fun provideLocalSource(dao: DetailsDao): DetailsLocalSource =
-        DetailsLocalSource(dao)
+    fun provideLocalSource(detailsDao: DetailsDao, cartDao: CartDao): DetailsLocalSource =
+        DetailsLocalSource(detailsDao, cartDao)
 
     @Singleton
     @Provides
@@ -35,4 +36,9 @@ object DetailsDatabaseModule {
     @Provides
     fun provideDetailsDao(database: DetailsDatabase): DetailsDao =
         database.getDetailsDao()
+
+    @Singleton
+    @Provides
+    fun provideCartDao(database: DetailsDatabase): CartDao =
+        database.getCartDao()
 }

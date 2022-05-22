@@ -18,4 +18,5 @@ import com.example.homestore_api.data.util.GsonConverter
 abstract class DetailsDatabase : RoomDatabase() {
 
     abstract fun getDetailsDao(): DetailsDao
+    abstract fun getCartDao(): CartDao
 }
