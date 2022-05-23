@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.details_api.data.api.model.DetailsDto
 import com.example.details_api.domain.model.Details
-import com.example.homestore_api.data.util.Constants.TABLE_DETAILS_NAME
+import com.example.homestore_api.data.util.Constants.TABLE_DETAILS
 
-@Entity(tableName = TABLE_DETAILS_NAME)
+@Entity(tableName = TABLE_DETAILS)
 data class DetailsEntity(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")

@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.details_api.domain.model.Details
+import com.example.details_api.domain.usecase.CartItemUseCase
 import com.example.details_api.domain.usecase.GetDetailsUseCase
 import com.example.homestore_api.domain.model.BestSeller
 import com.example.homestore_api.domain.model.ResultItem
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getHomeUseCase: GetHomeUseCase,
-    private val getDetailsUseCase: GetDetailsUseCase
+    private val getDetailsUseCase: GetDetailsUseCase,
+    private val cartItemUseCase: CartItemUseCase
 ) : ViewModel() {
 
     val home: LiveData<ResultItem> = getHomeUseCase.execute().asLiveData()
@@ -26,11 +28,7 @@ class MainViewModel @Inject constructor(
         return getHomeUseCase.searchBestSellerByName(searchQuery).asLiveData()
     }
 
-    suspend fun insertProductToCart(details: Details) {
-        getDetailsUseCase.insertDetails(details)
-    }
-
     suspend fun insertProductToCart() {
-        getDetailsUseCase.insertProduct()
+        cartItemUseCase.insertProduct()
     }
 }

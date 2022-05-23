@@ -18,6 +18,8 @@ import com.example.details.databinding.FragmentDetailsBinding
 import com.example.details.presentation.ui.adapter.FeaturesPagerAdapter
 import com.example.details.presentation.ui.adapter.PicturesPagerAdapter
 import com.example.details.presentation.viewmodel.DetailsViewModel
+import com.example.details_api.domain.model.CartItem
+import com.example.details_api.domain.model.Product
 import com.example.navigation.NavigationFlow
 import com.example.navigation.ToFlowNavigatable
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -65,7 +67,7 @@ class DetailsFragment : Fragment() {
                 findNavController().popBackStack()
             }
 
-            detailsViewModel.productList.observe(viewLifecycleOwner) {
+            detailsViewModel.cartItems.observe(viewLifecycleOwner) {
                 goodsCounterText.text = it.size.toString()
             }
         }
@@ -112,7 +114,18 @@ class DetailsFragment : Fragment() {
                 addToCartButton.apply {
                     text = "Add to cart      $$str"
                     setOnClickListener {
-                        detailsViewModel.insertDetails(details)
+                        val product = Product(
+                            0,
+                            details.images,
+                            details.price,
+                            details.title
+                        )
+                        val cartItem = CartItem(
+                            0,
+                            product,
+                            1
+                        )
+                        detailsViewModel.insertItemToCart(cartItem)
                     }
                 }
             }

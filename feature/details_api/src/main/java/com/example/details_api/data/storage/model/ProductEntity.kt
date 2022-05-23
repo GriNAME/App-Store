@@ -4,13 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.details_api.domain.model.Product
-import com.example.homestore_api.data.util.Constants.TABLE_PRODUCT_NAME
+import com.example.homestore_api.data.util.Constants.TABLE_PRODUCT
 
-@Entity(tableName = TABLE_PRODUCT_NAME)
+@Entity(tableName = TABLE_PRODUCT)
 data class ProductEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo(name = "images")
     val images: List<String>,
     @ColumnInfo(name = "price")
@@ -25,3 +25,14 @@ fun ProductEntity.mapToModel() = Product(
     price,
     title
 )
+
+fun Product.mapToEntity() = ProductEntity(
+    id,
+    images,
+    price,
+    title
+)
+
+fun List<ProductEntity>.mapToModels() = map {
+    it.mapToModel()
+}

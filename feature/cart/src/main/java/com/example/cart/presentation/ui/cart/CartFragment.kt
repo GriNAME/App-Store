@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.map
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cart.databinding.FragmentCartBinding
@@ -39,17 +40,20 @@ class CartFragment : Fragment() {
         initToolbar()
         initCartRecyclerView()
 
-        var counter = 0
-        cartViewModel.productList.observe(viewLifecycleOwner) { list ->
-            for (cart in list) {
-                counter += cart.price
+        cartViewModel.cartItems.observe(viewLifecycleOwner) { list ->
+
+            val resultList = ArrayList<Int>()
+
+            list.map {
+                resultList.add(it.product.price * it.quantity)
             }
-            binding.totalPriceText.text = counter.toString()
+
+            binding.totalPriceText.text = resultList.sum().toString()
         }
     }
 
     private fun initCartRecyclerView() {
-        cartViewModel.productList.observe(viewLifecycleOwner) {
+        cartViewModel.cartItems.observe(viewLifecycleOwner) {
             cartAdapter.setData(it)
 
             binding.cartRecyclerView.apply {
@@ -60,9 +64,6 @@ class CartFragment : Fragment() {
     }
 
     private fun initToolbar() {
-
-//        val navHostFragment = NavHostFragment.findNavController(this);
-//        NavigationUI.setupWithNavController(binding.toolbar, navHostFragment)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 

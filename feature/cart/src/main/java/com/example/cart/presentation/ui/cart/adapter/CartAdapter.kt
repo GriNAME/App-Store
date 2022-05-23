@@ -12,6 +12,7 @@ import com.example.cart.R
 import com.example.cart.databinding.RowCartBinding
 import com.example.cart.presentation.viewmodel.CartViewModel
 import com.example.cart.util.CartDiffUtil
+import com.example.details_api.domain.model.CartItem
 import com.example.details_api.domain.model.Product
 import com.example.navigation.NavigationFlow
 import com.example.navigation.ToFlowNavigatable
@@ -21,9 +22,9 @@ class CartAdapter(
     private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
-    private var productList = emptyList<Product>()
+    private var productList = emptyList<CartItem>()
 
-    fun setData(newProductList: List<Product>) {
+    fun setData(newProductList: List<CartItem>) {
         val cartDiffUtil = CartDiffUtil(productList, newProductList)
         val resultDiffUtil = DiffUtil.calculateDiff(cartDiffUtil)
         productList = newProductList
@@ -34,21 +35,38 @@ class CartAdapter(
 
         private var counter: Int = 1
 
-        fun bind(product: Product) {
+        fun bind(cartItem: CartItem) {
             binding.apply {
-                product.images.first().let {
+
+                cartItem.product.images.first().let {
                     productImage.load(it)
                 }
-                productTitleText.text = product.title
+                productImage.setOnClickListener {
+                    (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.DetailsFlow)
+                }
+
+                productTitleText.text = cartItem.product.title
                 productTitleText.setOnClickListener {
                     (requireActivity as ToFlowNavigatable).navigateToFlow(NavigationFlow.DetailsFlow)
                 }
 
-                productPrice.text = product.price.toString()
+                productPrice.text = cartItem.product.price.toString()
+                productCounterGoodsText.text = cartItem.quantity.toString()
 
                 productPlusButton.setOnClickListener {
-                    counter = ++counter
-                    productCounterGoodsText.text = counter.toString()
+
+                    val count = cartItem.quantity + 1
+                    productCounterGoodsText.text = count.toString()
+
+                    val newCartItem = CartItem(
+                        cartItem.id,
+                        cartItem.product,
+                        count
+                    )
+
+                    cartViewModel.updateItemToCart(newCartItem)
+                    cartViewModel.refreshTotalPrice()
+
                     if (counter > 0)
                         productMinusButton.setImageDrawable(
                             AppCompatResources.getDrawable(
@@ -59,10 +77,20 @@ class CartAdapter(
                 }
 
                 productMinusButton.setOnClickListener {
-                    if (counter > 0) {
-                        counter = --counter
-                        productCounterGoodsText.text = counter.toString()
+
+                    if (cartItem.quantity > 0) {
+                        val count = cartItem.quantity - 1
+                        productCounterGoodsText.text = count.toString()
+
+                        val newCartItem = CartItem(
+                            cartItem.id,
+                            cartItem.product,
+                            count
+                        )
+                        cartViewModel.updateItemToCart(newCartItem)
+                        cartViewModel.refreshTotalPrice()
                     }
+
                     if (counter == 0)
                         productMinusButton.setImageDrawable(
                             AppCompatResources.getDrawable(
@@ -73,7 +101,7 @@ class CartAdapter(
                 }
 
                 deleteButton.setOnClickListener {
-                    cartViewModel.deleteItemFromCart(product)
+                    cartViewModel.deleteItemFromCart(cartItem)
                     Toast.makeText(root.context, "${productTitleText.text} deleted", Toast.LENGTH_SHORT).show()
                 }
             }

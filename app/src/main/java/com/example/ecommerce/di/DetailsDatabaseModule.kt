@@ -6,7 +6,7 @@ import com.example.details_api.data.repository.DetailsLocalSource
 import com.example.details_api.data.storage.CartDao
 import com.example.details_api.data.storage.DetailsDao
 import com.example.details_api.data.storage.DetailsDatabase
-import com.example.homestore_api.data.util.Constants.DATABASE_DETAILS_NAME
+import com.example.homestore_api.data.util.Constants.DATABASE_DETAILS
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +29,7 @@ object DetailsDatabaseModule {
         Room.databaseBuilder(
             context,
             DetailsDatabase::class.java,
-            DATABASE_DETAILS_NAME
+            DATABASE_DETAILS
         ).build()
 
     @Singleton

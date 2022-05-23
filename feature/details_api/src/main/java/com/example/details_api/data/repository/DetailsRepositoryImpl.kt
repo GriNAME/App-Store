@@ -2,6 +2,8 @@ package com.example.details_api.data.repository
 
 import com.example.details_api.data.storage.model.mapToEntity
 import com.example.details_api.data.storage.model.mapToModel
+import com.example.details_api.data.storage.model.mapToModels
+import com.example.details_api.domain.model.CartItem
 import com.example.details_api.domain.model.Product
 import com.example.details_api.domain.model.Details
 import com.example.details_api.domain.repository.DetailsRepository
@@ -30,25 +32,31 @@ class DetailsRepositoryImpl @Inject constructor(
             }
         }
 
-    override fun getCartList(): Flow<List<Product>> =
-        local.getCartList().let { flow ->
+    override fun getCartItems(): Flow<List<CartItem>> =
+        local.getCartItems().let { flow ->
             flow.map { list ->
-                list.map {
-                    it.mapToModel()
-                }
+                list.mapToModels()
             }
         }
 
+    override suspend fun insertItemToCart(cartItem: CartItem) {
+        val newCartItem = CartItem(
+            0,
+            cartItem.product,
+            1
+        )
+        local.insertItemToCart(newCartItem)
+    }
 
-    override suspend fun insertDetails(details: Details) {
-        local.insertCart(details)
+    override suspend fun updateItemToCart(cartItem: CartItem) {
+        local.updateItemToCart(cartItem)
     }
 
     override suspend fun insertProduct() {
-        local.insertProduct()
+        local.insertCartItem()
     }
 
-    override suspend fun deleteItemFromCart(product: Product) {
-        local.deleteItemFromCart(product)
+    override suspend fun deleteItemFromCart(cartItem: CartItem) {
+        local.deleteItemFromCart(cartItem)
     }
 }
