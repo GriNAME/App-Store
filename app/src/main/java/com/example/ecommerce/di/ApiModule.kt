@@ -1,9 +1,6 @@
 package com.example.ecommerce.di
 
 import android.content.Context
-import com.example.cart.data.repository.CartLocalSource
-import com.example.cart.data.repository.CartRepositoryImpl
-import com.example.cart.domain.repository.CartRepository
 import com.example.homestore_api.data.api.HomeShopApi
 import com.example.homestore_api.data.repository.LocalSource
 import com.example.homestore_api.data.repository.RemoteSource
@@ -32,11 +29,6 @@ object ApiModule {
     @Provides
     fun provideDetailsRepository(remoteSource: com.example.details_api.data.repository.DetailsRemoteSource, localSource: com.example.details_api.data.repository.DetailsLocalSource): com.example.details_api.domain.repository.DetailsRepository =
         com.example.details_api.data.repository.DetailsRepositoryImpl(remote = remoteSource, local = localSource)
-
-    @Singleton
-    @Provides
-    fun provideCartRepository(localSource: CartLocalSource): CartRepository =
-        CartRepositoryImpl(local = localSource)
 
     @Singleton
     @Provides
